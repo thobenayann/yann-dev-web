@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# This is the project structure of this Nextjs15 application
+
+```markdown
+.
+├── app
+│   ├── layout.ts
+│   ├── page.tsx
+│   └── globals.css
+├── src
+│   └── components
+│       ├── ui/
+│       ├── layout/
+│       └── theme/
+├── src
+│   └── lib
+│       └── utils.ts
+├── public/
+├── next.config.ts
+├── package.json
+└── README.md
+```
+
+## utils.ts
+
+This file contain the tailwind utility function called "cn" :
+
+```ts
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```

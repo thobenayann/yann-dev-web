@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import { BackgroundCursor } from '@/components/ui/background-cursor';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -28,10 +29,11 @@ export default function RootLayout({
     return (
         <html lang='en' className='h-full' suppressHydrationWarning>
             <body
-                className={
-                    (cn(geistSans.variable, geistMono.variable),
-                    'antialiased h-full flex flex-col gap-6')
-                }
+                className={cn(
+                    geistSans.variable,
+                    geistMono.variable,
+                    'antialiased h-full flex flex-col gap-6'
+                )}
             >
                 <ThemeProvider
                     attribute='class'
@@ -39,8 +41,12 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Header />
-                    {children}
+                    <BackgroundCursor>
+                        <div className='w-full h-full flex flex-col'>
+                            <Header />
+                            {children}
+                        </div>
+                    </BackgroundCursor>
                 </ThemeProvider>
             </body>
         </html>
