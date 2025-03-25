@@ -1,30 +1,51 @@
 // Configuration des routes du site
 
+export type Route = {
+    path: string;
+    isEnabled: boolean;
+    isProtected?: boolean;
+};
+
 export type Routes = {
-    [key: string]: boolean;
+    [K in '/' | '/about' | '/work' | '/blog' | '/hobbies']: Route;
 };
 
-export type ProtectedRoutes = {
-    [key: string]: boolean;
+export const baseURL = 'yanndevweb.com' as const;
+
+export const routes: Routes = {
+    '/': {
+        path: '/',
+        isEnabled: true,
+    },
+    '/about': {
+        path: '/about',
+        isEnabled: true,
+    },
+    '/work': {
+        path: '/work',
+        isEnabled: true,
+    },
+    '/blog': {
+        path: '/blog',
+        isEnabled: true,
+    },
+    '/hobbies': {
+        path: '/hobbies',
+        isEnabled: true,
+    },
+} as const;
+
+// Utilitaire pour vérifier si une route est valide
+export const isValidRoute = (path: string): path is keyof Routes => {
+    return path in routes;
 };
 
-export type BaseURL = string;
-
-const baseURL: BaseURL = 'yanndevweb.com/';
-
-const routes: Routes = {
-    '/': true,
-    '/about': true,
-    '/work': true,
-    '/blog': true,
-    '/contact': true,
+// Utilitaire pour obtenir toutes les routes activées
+export const getEnabledRoutes = () => {
+    return Object.values(routes).filter((route) => route.isEnabled);
 };
 
-// Enable password protection on selected routes
-// Set password in the .env file
-const protectedRoutes: ProtectedRoutes = {
-    // '/admin': true,
-    // '/dashboard': true,
+// Utilitaire pour obtenir toutes les routes protégées
+export const getProtectedRoutes = () => {
+    return Object.values(routes).filter((route) => route.isProtected);
 };
-
-export { baseURL, protectedRoutes, routes };

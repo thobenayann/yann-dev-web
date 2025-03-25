@@ -1,6 +1,6 @@
 // Point d'entrée pour toutes les configurations
 import effects, { EffectsConfig } from './effects';
-import { baseURL, protectedRoutes, routes } from './routes';
+import { baseURL, routes } from './routes';
 import style, { StyleConfig } from './style';
 
 // Types d'affichage
@@ -15,7 +15,7 @@ const display: DisplayConfig = {
 };
 
 // Configuration principale
-export { baseURL, display, effects, protectedRoutes, routes, style };
+export { baseURL, display, effects, routes, style };
 
 // Export des types
 export type { EffectsConfig, StyleConfig };

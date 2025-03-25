@@ -16,7 +16,7 @@ alwaysApply: true
 │       ├── ui/
 │       ├── layout/
 │       └── theme/
-├── src
+│   └── config
 │   └── lib
 │       └── utils.ts
 ├── public/
