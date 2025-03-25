@@ -118,6 +118,10 @@ export function ExpandableTabs({
         <div className='mx-1 h-[24px] w-[1.2px] bg-border' aria-hidden='true' />
     );
 
+    // Neon color
+    const neonColorDark = 'primary';
+    const neonBlurColorLight = 'oklch(0.541 0.281 293.009)';
+
     return (
         <div
             ref={outsideClickRef}
@@ -174,11 +178,30 @@ export function ExpandableTabs({
                             className={cn(
                                 'relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300 cursor-pointer',
                                 isActive
-                                    ? cn('bg-muted', activeColor)
+                                    ? cn('text-primary')
                                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                             )}
                         >
                             <TabContent />
+                            {isActive && (
+                                <motion.div
+                                    layoutId='lamp'
+                                    className='absolute inset-0 w-full rounded-xl -z-10'
+                                    initial={false}
+                                    transition={{
+                                        type: 'spring',
+                                        stiffness: 300,
+                                        damping: 30,
+                                    }}
+                                >
+                                    <div className='absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-brand/80 dark:bg-primary/80 rounded-t-full'>
+                                        <div className='absolute w-12 h-6 bg-brand/20 dark:bg-primary/20 rounded-full blur-md -top-2 -left-2' />
+                                        <div className='absolute w-8 h-6 bg-brand/20 dark:bg-primary/20 rounded-full blur-md -top-1' />
+                                        <div className='absolute w-4 h-4 bg-brand/20 dark:bg-primary/20 rounded-full blur-sm top-0 left-2' />
+                                    </div>
+                                    <div className='absolute inset-0 bg-brand/5 dark:bg-primary/5 rounded-xl backdrop-blur-sm' />
+                                </motion.div>
+                            )}
                         </motion.div>
                     </Link>
                 );

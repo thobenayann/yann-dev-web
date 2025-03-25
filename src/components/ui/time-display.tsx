@@ -34,5 +34,9 @@ export function TimeDisplay({ timeZone, locale = 'fr-FR' }: TimeDisplayProps) {
         return () => clearInterval(intervalId);
     }, [timeZone, locale]);
 
-    return <time suppressHydrationWarning>{currentTime}</time>;
+    return (
+        <time suppressHydrationWarning className='text-primary'>
+            {currentTime}
+        </time>
+    );
 }

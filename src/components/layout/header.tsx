@@ -1,8 +1,8 @@
 'use client';
 
 import { ExpandableTabs } from '@/components/ui/expandable-tabs';
-import person from '@/config/person';
-import { TimeDisplay } from '@/lib/time-display';
+import { TimeDisplay } from '@/components/ui/time-display';
+import person from '@/config/content';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -75,18 +75,23 @@ export function Header() {
 
     return (
         <>
+            {/* Location */}
+            <div className='fixed top-6 left-8 z-50'>
+                <div className='text-sm text-primary'>{person.location}</div>
+            </div>
+
             {/* Time and Theme Toggle */}
-            <div className='fixed top-4 right-4 flex items-center gap-4 z-50'>
-                {person.timeZone && (
+            <div className='fixed top-6 right-8 flex items-center gap-4 z-50'>
+                {person.timezone && (
                     <div className='text-sm text-muted-foreground'>
-                        <TimeDisplay timeZone={person.timeZone} />
+                        <TimeDisplay timeZone={person.timezone} />
                     </div>
                 )}
                 <ModeToggle />
             </div>
 
             {/* Navigation */}
-            <header className='fixed max-md:bottom-4 md:top-4 left-1/2 -translate-x-1/2 z-50'>
+            <nav className='fixed max-md:bottom-4 md:top-4 left-1/2 -translate-x-1/2 z-50'>
                 <ExpandableTabs
                     tabs={navigationTabs}
                     onChange={handleTabChange}
@@ -97,7 +102,7 @@ export function Header() {
                     activeColor='text-foreground'
                     initialSelectedIndex={activeTabIndex}
                 />
-            </header>
+            </nav>
 
             {/* Background Mask */}
             <div className='fixed inset-x-0 top-0 h-32 pointer-events-none bg-gradient-to-b from-background to-transparent z-40' />

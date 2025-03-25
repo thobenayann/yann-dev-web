@@ -1,20 +1,10 @@
 import { Header } from '@/components/layout/header';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { BackgroundCursor } from '@/components/ui/background-cursor';
+import { fontInter } from '@/config/font';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-
-const geistSans = Geist({
-    variable: '--font-geist-sans',
-    subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
-    subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -27,14 +17,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en' className='h-full' suppressHydrationWarning>
-            <body
-                className={cn(
-                    geistSans.variable,
-                    geistMono.variable,
-                    'antialiased h-full flex flex-col gap-6'
-                )}
-            >
+        <html
+            lang='en'
+            className={cn(fontInter.variable, 'h-full font-family-sans')}
+            suppressHydrationWarning
+        >
+            <body className='antialiased h-full flex flex-col gap-6'>
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
