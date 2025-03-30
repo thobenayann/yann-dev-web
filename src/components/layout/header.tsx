@@ -48,9 +48,28 @@ export function Header() {
     const [scrollAtTop, setScrollAtTop] = useState(true);
     const pathname = usePathname();
 
+    /**
+     * Détermine l'index de l'onglet actif en fonction du chemin actuel
+     * Gère les cas spéciaux :
+     * - Route home (/fr ou /en)
+     * - Routes avec locale (/fr/about, /en/work, etc.)
+     */
     const activeTabIndex = useMemo(() => {
+        // Utilise le pathname actuel ou '/' par défaut
         const path = pathname ?? '/';
-        const pathWithoutLocale = path.split('/').slice(2).join('/') || '/';
+
+        // Extrait les segments du chemin (ex: ['', 'fr', 'about'] pour '/fr/about')
+        const segments = path.split('/').filter(Boolean);
+
+        // Si nous n'avons que la locale (ex: /fr ou /en), c'est la page d'accueil
+        if (segments.length === 1) {
+            return navigationTabs.findIndex(
+                (tab) => 'path' in tab && tab.path === '/'
+            );
+        }
+
+        // Pour les autres routes, on compare sans la locale
+        const pathWithoutLocale = segments.slice(1).join('/');
         return navigationTabs.findIndex(
             (tab) => 'path' in tab && tab.path === `/${pathWithoutLocale}`
         );
