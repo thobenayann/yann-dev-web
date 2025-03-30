@@ -50,8 +50,9 @@ export function Header() {
 
     const activeTabIndex = useMemo(() => {
         const path = pathname ?? '/';
+        const pathWithoutLocale = path.split('/').slice(2).join('/') || '/';
         return navigationTabs.findIndex(
-            (tab) => 'path' in tab && tab.path === path
+            (tab) => 'path' in tab && tab.path === `/${pathWithoutLocale}`
         );
     }, [pathname]);
 
@@ -101,7 +102,6 @@ export function Header() {
                         'bg-background/75 backdrop-blur-md border-white/10',
                         !scrollAtTop && 'shadow-lg'
                     )}
-                    activeColor='text-foreground'
                     initialSelectedIndex={activeTabIndex}
                 />
             </nav>

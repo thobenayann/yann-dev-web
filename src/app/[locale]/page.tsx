@@ -68,7 +68,6 @@ export default function Home({ params }: PageProps) {
     setRequestLocale(locale);
 
     const tHome = useTranslations('Home');
-    const tCommon = useTranslations('Common');
 
     return (
         <div className='flex flex-col gap-6 p-52'>

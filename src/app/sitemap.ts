@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Get all active routes from the configuration
     const activeRoutes = Object.entries(routesConfig)
-        .filter(([_, route]: [string, Route]) => route.isEnabled)
+        .filter(([, route]: [string, Route]) => route.isEnabled)
         .map(([path]) => ({
             url: `https://${baseURL}${path === '/' ? '' : path}`,
             lastModified: new Date().toISOString().split('T')[0],

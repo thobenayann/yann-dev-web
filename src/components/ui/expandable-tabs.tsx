@@ -38,8 +38,6 @@ interface ExpandableTabsProps {
     tabs: readonly TabItem[] | TabItem[];
     /** Additional CSS classes */
     className?: string;
-    /** Color to use for the active tab */
-    activeColor?: string;
     /** Callback when a tab is selected */
     onChange?: (index: number | null) => void;
     /** Index of the initially selected tab */
@@ -87,7 +85,6 @@ const transition = { delay: 0.1, type: 'spring', bounce: 0, duration: 0.6 };
 export function ExpandableTabs({
     tabs,
     className,
-    activeColor = 'text-primary',
     onChange,
     initialSelectedIndex,
 }: ExpandableTabsProps) {
@@ -118,10 +115,6 @@ export function ExpandableTabs({
         <div className='mx-1 h-[24px] w-[1.2px] bg-border' aria-hidden='true' />
     );
 
-    // Neon color
-    const neonColorDark = 'primary';
-    const neonBlurColorLight = 'oklch(0.541 0.281 293.009)';
-
     return (
         <div
             ref={outsideClickRef}
@@ -137,6 +130,7 @@ export function ExpandableTabs({
 
                 const Icon = tab.icon;
                 const isActive = index === initialSelectedIndex;
+
                 // Show title if we're on desktop or if this tab is selected (mobile)
                 const shouldShowTitle =
                     isDesktop || (hoverIndex === index && !isDesktop);
