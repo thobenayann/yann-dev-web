@@ -61,11 +61,12 @@ export default async function RootLayout({
 
     let messages;
     try {
-        messages = (await import(`@messages/${locale}.json`)).default;
+        messages = (await import(`../../../messages/${locale}.json`)).default;
     } catch (error) {
         console.error(`Could not load messages for ${locale}`, error);
-        messages = (await import(`@messages/${routing.defaultLocale}.json`))
-            .default;
+        messages = (
+            await import(`../../../messages/${routing.defaultLocale}.json`)
+        ).default;
     }
 
     return (
