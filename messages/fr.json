@@ -1,0 +1,119 @@
+{
+    "/*": "===== PAGES PRINCIPALES =====",
+    "Home": {
+        "title": "Portfolio de Yann THOBENA",
+        "description": "Site portfolio présentant mon travail en tant que Concepteur Développeur d'Applications",
+        "headline": "Concepteur Développeur d'Applications",
+        "subline": "Je suis Yann, un concepteur développeur d'applications chez IPANOVA, où je crée des expériences utilisateur intuitives.\nJe suis également développeur web fullstack, créant des applications web robustes et évolutives."
+    },
+
+    "/*1": "===== PAGE À PROPOS =====",
+    "About": {
+        "title": "À propos de moi",
+        "description": "Découvrez Yann THOBENA, Concepteur Développeur d'Applications de Toulouse, France",
+        "intro": {
+            "title": "Introduction"
+        },
+        "work": {
+            "title": "Expérience professionnelle"
+        },
+        "studies": {
+            "title": "Formation & Éducation"
+        },
+        "technical": {
+            "title": "Compétences techniques"
+        },
+        "calendar": {
+            "schedule": "Planifier un appel"
+        }
+    },
+
+    "/*2": "===== PAGE BLOG =====",
+    "Blog": {
+        "title": "Blog",
+        "description": "Découvrez mes articles sur le développement web, les technologies front-end et back-end, et mes expériences en tant que développeur full-stack."
+    },
+
+    "/*3": "===== PAGE PROJETS =====",
+    "Work": {
+        "title": "Projets",
+        "description": "Découvrez mes projets de développement web, des applications full-stack aux sites web modernes et performants.",
+        "viewProject": "Voir le projet",
+        "backToProjects": "Retour aux projets",
+        "projectDetails": {
+            "overview": "Aperçu",
+            "features": "Fonctionnalités clés",
+            "technologies": "Technologies utilisées",
+            "challenges": "Défis et apprentissages",
+            "outcome": "Résultats"
+        }
+    },
+
+    "/*4": "===== PAGE PASSIONS =====",
+    "Hobbies": {
+        "title": "Mes passions",
+        "description": "Découvrez les passions de Yann"
+    },
+
+    "/*5": "===== NAVIGATION =====",
+    "Navigation": {
+        "home": "Accueil",
+        "about": "À propos",
+        "work": "Projets",
+        "blog": "Blog",
+        "hobbies": "Passions"
+    },
+
+    "/*6": "===== NEWSLETTER =====",
+    "Newsletter": {
+        "title": "Abonnez-vous à la newsletter de Yann",
+        "description": "J'écris occasionnellement sur la conception logicielle, la technologie et je partage des réflexions sur l'intersection du code et des besoins des utilisateurs.",
+        "subscribe": "S'abonner",
+        "emailPlaceholder": "Votre adresse email",
+        "success": "Merci pour votre inscription !",
+        "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+
+    "/*7": "===== ÉLÉMENTS COMMUNS =====",
+    "Common": {
+        "latestFromBlog": "Derniers articles du blog",
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue",
+        "notFound": "Page non trouvée",
+        "backToHome": "Retour à l'accueil",
+        "languages": {
+            "fr": "Français",
+            "en": "Anglais"
+        }
+    },
+
+    "/*8": "===== CONTENU STATIQUE =====",
+    "StaticContent": {
+        "person": {
+            "role": "Concepteur Développeur d'Applications",
+            "location": "Toulouse, France",
+            "languages": ["Français", "Anglais"]
+        },
+        "social": {
+            "github": "GitHub",
+            "linkedin": "LinkedIn",
+            "email": "Email"
+        },
+        "technical": {
+            "figma": {
+                "title": "Figma",
+                "description": "Capable de prototyper dans Figma avec créativité et une approche design moderne."
+            },
+            "nextjs": {
+                "apps": {
+                    "title": "Applications Next.js personnalisées",
+                    "description": "Construction d'applications nouvelle génération avec Next.js + Tailwind CSS"
+                },
+                "websites": {
+                    "title": "Sites web Next.js",
+                    "description": "Construction de beaux sites web responsifs administrables et optimisés SEO avec Next.js + Strapi CMS"
+                }
+            }
+        }
+    }
+}

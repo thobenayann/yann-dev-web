@@ -2,7 +2,7 @@
 
 import { ExpandableTabs } from '@/components/ui/expandable-tabs';
 import { TimeDisplay } from '@/components/ui/time-display';
-import person from '@/config/content';
+import { person } from '@/config/content';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -11,6 +11,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FaBlog } from 'react-icons/fa';
 import { IoGameController } from 'react-icons/io5';
 import { MdWork } from 'react-icons/md';
+import { LanguageSwitcher } from '../i18n/language-switcher';
 import { ModeToggle } from '../theme/theme-mode-toggle';
 
 const navigationTabs = [
@@ -76,8 +77,9 @@ export function Header() {
     return (
         <>
             {/* Location */}
-            <div className='fixed top-6 left-8 z-50'>
+            <div className='fixed top-6 left-8 z-50 flex flex-col items-start gap-4'>
                 <div className='text-sm text-primary'>{person.location}</div>
+                <LanguageSwitcher />
             </div>
 
             {/* Time and Theme Toggle */}

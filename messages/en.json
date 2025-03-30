@@ -1,0 +1,119 @@
+{
+    "/*": "===== MAIN PAGES =====",
+    "Home": {
+        "title": "Yann THOBENA's Portfolio",
+        "description": "Portfolio website showcasing my work as an Application Designer & Developer",
+        "headline": "Application Designer & Developer",
+        "subline": "I'm Yann, an application designer at IPANOVA, where I craft intuitive user experiences.\nI am also a fullstack web developer, creating robust and scalable web applications."
+    },
+
+    "/*1": "===== ABOUT PAGE =====",
+    "About": {
+        "title": "About me",
+        "description": "Meet Yann THOBENA, Application Designer & Developer from Toulouse, France",
+        "intro": {
+            "title": "Introduction"
+        },
+        "work": {
+            "title": "Work Experience"
+        },
+        "studies": {
+            "title": "Education & Training"
+        },
+        "technical": {
+            "title": "Technical skills"
+        },
+        "calendar": {
+            "schedule": "Schedule a call"
+        }
+    },
+
+    "/*2": "===== BLOG PAGE =====",
+    "Blog": {
+        "title": "Blog",
+        "description": "Discover my articles about web development, front-end and back-end technologies, and my experiences as a full-stack developer."
+    },
+
+    "/*3": "===== PROJECTS PAGE =====",
+    "Work": {
+        "title": "Projects",
+        "description": "Discover my web development projects, from full-stack applications to modern and performant websites.",
+        "viewProject": "View project",
+        "backToProjects": "Back to projects",
+        "projectDetails": {
+            "overview": "Overview",
+            "features": "Key Features",
+            "technologies": "Technologies Used",
+            "challenges": "Challenges and Learnings",
+            "outcome": "Outcome"
+        }
+    },
+
+    "/*4": "===== HOBBIES PAGE =====",
+    "Hobbies": {
+        "title": "My passions",
+        "description": "Discover Yann's passions"
+    },
+
+    "/*5": "===== NAVIGATION =====",
+    "Navigation": {
+        "home": "Home",
+        "about": "About",
+        "work": "Work",
+        "blog": "Blog",
+        "hobbies": "Hobbies"
+    },
+
+    "/*6": "===== NEWSLETTER =====",
+    "Newsletter": {
+        "title": "Subscribe to Yann's Newsletter",
+        "description": "I occasionally write about software design, technology, and share thoughts on the intersection of code and users needs.",
+        "subscribe": "Subscribe",
+        "emailPlaceholder": "Your email address",
+        "success": "Thanks for subscribing!",
+        "error": "An error occurred. Please try again."
+    },
+
+    "/*7": "===== COMMON ELEMENTS =====",
+    "Common": {
+        "latestFromBlog": "Latest from the blog",
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "notFound": "Page not found",
+        "backToHome": "Back to home",
+        "languages": {
+            "fr": "French",
+            "en": "English"
+        }
+    },
+
+    "/*8": "===== STATIC CONTENT =====",
+    "StaticContent": {
+        "person": {
+            "role": "Application Designer & Developer",
+            "location": "Toulouse, France",
+            "languages": ["French", "English"]
+        },
+        "social": {
+            "github": "GitHub",
+            "linkedin": "LinkedIn",
+            "email": "Email"
+        },
+        "technical": {
+            "figma": {
+                "title": "Figma",
+                "description": "Able to prototype in Figma with creativity and modern design approach."
+            },
+            "nextjs": {
+                "apps": {
+                    "title": "Next.js custom applications",
+                    "description": "Building next gen apps with Next.js + Tailwind CSS"
+                },
+                "websites": {
+                    "title": "Next.js web sites",
+                    "description": "Building beautiful responsive administrable web sites SEO optimized with Next.js + Strapi CMS"
+                }
+            }
+        }
+    }
+}

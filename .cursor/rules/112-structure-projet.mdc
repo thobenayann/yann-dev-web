@@ -7,11 +7,11 @@ alwaysApply: true
 
 ```markdown
 .
-├── app
-│   ├── layout.ts
-│   ├── page.tsx
-│   └── globals.css
 ├── src
+│   └── app
+│       ├── layout.ts
+│       ├── page.tsx
+│   └── globals.css
 │   └── components
 │       ├── ui/
 │       ├── layout/
