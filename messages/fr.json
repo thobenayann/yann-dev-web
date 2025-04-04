@@ -4,7 +4,8 @@
         "title": "Portfolio de Yann THOBENA",
         "description": "Site portfolio présentant mon travail en tant que Concepteur Développeur d'Applications",
         "headline": "Concepteur Développeur d'Applications",
-        "subline": "Je suis Yann, un concepteur développeur d'applications chez IPANOVA, où je crée des expériences utilisateur intuitives.\nJe suis également développeur web fullstack, créant des applications web robustes et évolutives."
+        "subline": "Je suis Yann, un concepteur développeur d'applications chez IPANOVA, où je crée des expériences utilisateur intuitives.\nJe suis également développeur web fullstack, créant des applications web robustes et évolutives.",
+        "projects-link-label": "Lire l'étude de cas"
     },
 
     "/*1": "===== PAGE À PROPOS =====",

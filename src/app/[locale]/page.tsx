@@ -1,21 +1,19 @@
+import { TranslatedContent } from '@/components/i18n/translated-content';
+import { getProjects } from '@/lib/mdx';
+import { PageParams } from '@/types/next';
 import { setRequestLocale } from 'next-intl/server';
 
 import { baseURL } from '@/config/routes';
 import { routing } from '@/i18n/routing';
-import { hasLocale, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { use } from 'react';
-
-interface PageProps {
-    params: Promise<{ locale: string }>;
-}
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+    params,
+}: PageParams<{ locale: string }>) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'Home' });
 
@@ -57,21 +55,11 @@ export async function generateMetadata({ params }: PageProps) {
     };
 }
 
-export default function Home({ params }: PageProps) {
-    const { locale } = use(params);
-
-    if (!hasLocale(routing.locales, locale)) {
-        notFound();
-    }
-
-    // Enable static rendering
+export default async function Home({ params }: PageParams<{ locale: string }>) {
+    const { locale } = await params;
     setRequestLocale(locale);
 
-    const tHome = useTranslations('Home');
+    const projects = await getProjects(locale);
 
-    return (
-        <div className='flex flex-col gap-6 p-52'>
-            <h1>{tHome('title')}</h1>
-        </div>
-    );
+    return <TranslatedContent projects={projects} locale={locale} />;
 }

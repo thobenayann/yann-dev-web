@@ -1,7 +1,17 @@
-export default function Home() {
+import { Projects } from '@/components/ui/projects';
+import { getProjects } from '@/lib/mdx';
+
+interface PageProps {
+    params: Promise<{ locale: string }>;
+}
+
+export default async function WorkPage({ params }: PageProps) {
+    const { locale } = await params;
+    const projects = await getProjects(locale);
+
     return (
-        <div className='w-full grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-            <h1>Work</h1>
-        </div>
+        <main className='container mx-auto py-12'>
+            <Projects projects={projects} locale={locale} />
+        </main>
     );
 }
