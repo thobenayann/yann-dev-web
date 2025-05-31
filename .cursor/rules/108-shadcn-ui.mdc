@@ -1,6 +1,7 @@
 ---
 description: How use Shadcn/UI to add styles to our applications
-globs: *.tsx, *.ts
+globs: *.tsx,*.ts
+alwaysApply: false
 ---
 ## Context
 

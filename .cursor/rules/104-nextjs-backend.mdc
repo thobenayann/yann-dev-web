@@ -1,6 +1,7 @@
 ---
 description: EXPLAIN how NextJS 15 backend methods work.
-globs: *.ts, *.tsx
+globs: *.ts,*.tsx
+alwaysApply: false
 ---
 ## Context
 

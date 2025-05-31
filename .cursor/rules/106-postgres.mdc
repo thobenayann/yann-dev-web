@@ -1,6 +1,7 @@
 ---
 description: How write PostgresQL queries
 globs: *.sql
+alwaysApply: false
 ---
 ## Context
 

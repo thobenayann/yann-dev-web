@@ -92,7 +92,7 @@ export function ExpandableTabs({
     const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
     const outsideClickRef = React.useRef<HTMLDivElement>(null);
     // Detect if we're on desktop for different behavior
-    const isDesktop = useMediaQuery('(min-width: 768px)');
+    const isDesktop = useMediaQuery('(min-width: 1024px)');
 
     // Handle clicking outside the tabs (mobile only)
     useOnClickOutside(outsideClickRef as React.RefObject<HTMLElement>, () => {
