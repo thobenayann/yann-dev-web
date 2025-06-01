@@ -2,6 +2,7 @@ import { Project } from '@/types/mdx';
 import { useTranslations } from 'next-intl';
 import { HeroSection } from '../layout/hero-section';
 import { Projects } from '../ui/projects';
+import { SecondaryTitle } from '../ui/secondary-title';
 
 type TranslatedHomeContentProps = {
     projects: Project[];
@@ -24,9 +25,7 @@ export function TranslatedHomeContent({
             />
 
             <section className='container mx-auto px-6 md:px-10'>
-                <h2 className='text-2xl md:text-3xl font-bold mb-10'>
-                    {tHome('projects-title')}
-                </h2>
+                <SecondaryTitle text={tHome('projects-title')} />
                 <Projects projects={projects} locale={locale} />
             </section>
         </div>

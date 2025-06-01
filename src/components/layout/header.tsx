@@ -1,7 +1,6 @@
 'use client';
 
 import { ExpandableTabs } from '@/components/ui/expandable-tabs';
-import { TimeDisplay } from '@/components/ui/time-display';
 import { person } from '@/config/content';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
@@ -99,16 +98,11 @@ export function Header() {
             {/* Location */}
             <div className='fixed top-6 left-8 z-50 flex flex-col items-start gap-4'>
                 <div className='text-sm text-primary'>{person.location}</div>
-                <LanguageSwitcher />
             </div>
 
             {/* Time and Theme Toggle */}
             <div className='fixed top-6 right-8 flex items-center gap-4 z-50'>
-                {person.timezone && (
-                    <div className='text-sm text-muted-foreground'>
-                        <TimeDisplay timeZone={person.timezone} />
-                    </div>
-                )}
+                {person.timezone && <LanguageSwitcher />}
                 <ModeToggle />
             </div>
 
