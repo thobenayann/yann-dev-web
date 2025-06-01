@@ -28,7 +28,10 @@ export function ProjectCard({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className={cn('group flex flex-col gap-6 w-full max-w-5xl mx-auto')}
+            className={cn(
+                'group flex flex-col gap-6 w-full max-w-5xl mx-auto relative z-10'
+            )}
+            style={{ isolation: 'isolate' }}
         >
             <Carousel
                 images={metadata.images.map((image) => ({

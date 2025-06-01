@@ -76,7 +76,7 @@ export function BackgroundCursor({
             <div
                 ref={backgroundRef}
                 className={cn(
-                    'fixed inset-0 z-0 overflow-hidden pointer-events-none',
+                    'fixed inset-0 -z-10 overflow-hidden pointer-events-none',
                     className
                 )}
                 style={maskStyle}
