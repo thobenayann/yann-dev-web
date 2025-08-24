@@ -8,7 +8,7 @@ import { baseURL } from '@/config/routes';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 
 export async function generateMetadata({
@@ -59,15 +59,7 @@ export default async function RootLayout({
     // Enable static rendering
     setRequestLocale(locale);
 
-    let messages;
-    try {
-        messages = (await import(`../../../messages/${locale}.json`)).default;
-    } catch (error) {
-        console.error(`Could not load messages for ${locale}`, error);
-        messages = (
-            await import(`../../../messages/${routing.defaultLocale}.json`)
-        ).default;
-    }
+    const messages = await getMessages();
 
     return (
         <html
