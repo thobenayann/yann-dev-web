@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/theme/theme-provider';
 import { BackgroundCursor } from '@/components/ui/background-cursor';
 import { home, person } from '@/config/content';
 import { fontInter } from '@/config/font';
-import { baseURL } from '@/config/routes';
+import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -19,13 +19,13 @@ export async function generateMetadata({
     const { locale } = await params;
 
     return {
-        metadataBase: new URL(`https://${baseURL}`),
+        metadataBase: new URL(SITE_URL),
         title: home.title,
         description: home.description,
         openGraph: {
             title: `${person.firstName}'s Portfolio`,
             description: 'Portfolio website showcasing my work.',
-            url: baseURL,
+            url: SITE_URL,
             siteName: `${person.firstName}'s Portfolio`,
             locale: locale === 'fr' ? 'fr_FR' : 'en_US',
             type: 'website',

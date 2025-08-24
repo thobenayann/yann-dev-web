@@ -1,4 +1,5 @@
-import { baseURL, routes as routesConfig } from '@/config/routes';
+import { routes as routesConfig } from '@/config/routes';
+import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { getProjects } from '@/lib/mdx';
 import { MetadataRoute } from 'next';
@@ -16,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         routing.locales.map(async (locale) => {
             const projects = await getProjects(locale);
             return projects.map((post) => ({
-                url: `https://${baseURL}/${locale}/work/${post.slug}`,
+                url: `${SITE_URL}/${locale}/work/${post.slug}`,
                 lastModified: post.metadata.publishedAt,
                 changeFrequency: 'monthly' as const,
                 priority: 0.7,
@@ -31,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         Object.entries(routesConfig)
             .filter(([, route]) => route.isEnabled)
             .map(([path]) => ({
-                url: `https://${baseURL}/${locale}${path === '/' ? '' : path}`,
+                url: `${SITE_URL}/${locale}${path === '/' ? '' : path}`,
                 lastModified: now,
                 changeFrequency: 'daily' as const,
                 priority: path === '/' ? 1.0 : 0.9,

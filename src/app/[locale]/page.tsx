@@ -2,7 +2,7 @@ import { TranslatedHomeContent } from '@/components/i18n/translated-home-content
 import { getProjects } from '@/lib/mdx';
 import { setRequestLocale } from 'next-intl/server';
 
-import { baseURL } from '@/config/routes';
+import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
 
@@ -20,7 +20,7 @@ export async function generateMetadata({
 
     const title = t('title');
     const description = t('description');
-    const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+    const ogImage = `${SITE_URL}/og?title=${encodeURIComponent(title)}`;
 
     return {
         title,
@@ -29,7 +29,7 @@ export async function generateMetadata({
             title,
             description,
             type: 'website',
-            url: `https://${baseURL}`,
+            url: SITE_URL,
             images: [
                 {
                     url: ogImage,
@@ -44,11 +44,11 @@ export async function generateMetadata({
             images: [ogImage],
         },
         alternates: {
-            canonical: `https://${baseURL}`,
+            canonical: SITE_URL,
             languages: routing.locales.reduce(
                 (acc, locale) => ({
                     ...acc,
-                    [locale]: `https://${baseURL}/${locale}`,
+                    [locale]: `${SITE_URL}/${locale}`,
                 }),
                 {}
             ),
