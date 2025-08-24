@@ -2,45 +2,14 @@
 
 import { ExpandableTabs } from '@/components/ui/expandable-tabs';
 import { person } from '@/config/content';
+import { useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import { AiFillHome } from 'react-icons/ai';
-import { BsFillPersonFill } from 'react-icons/bs';
-import { FaBlog } from 'react-icons/fa';
-import { IoGameController } from 'react-icons/io5';
-import { MdWork } from 'react-icons/md';
 import { LanguageSwitcher } from '../i18n/language-switcher';
 import { ModeToggle } from '../theme/theme-mode-toggle';
 
-const navigationTabs = [
-    {
-        title: '',
-        icon: AiFillHome,
-        path: '/',
-    },
-    { type: 'separator' as const },
-    {
-        title: 'About',
-        icon: BsFillPersonFill,
-        path: '/about',
-    },
-    {
-        title: 'Work',
-        icon: MdWork,
-        path: '/work',
-    },
-    {
-        title: 'Blog',
-        icon: FaBlog,
-        path: '/blog',
-    },
-    {
-        title: 'Hobbies',
-        icon: IoGameController,
-        path: '/hobbies',
-    },
-] as const;
+import { navigationTabs } from '@/data/navigation';
 
 export function Header() {
     const router = useRouter();
@@ -87,9 +56,7 @@ export function Header() {
     const handleTabChange = (index: number | null) => {
         if (index !== null) {
             const tab = navigationTabs[index];
-            if ('path' in tab) {
-                router.push(tab.path);
-            }
+            if ('path' in tab) router.push(tab.path);
         }
     };
 
