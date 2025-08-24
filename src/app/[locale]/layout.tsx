@@ -2,13 +2,17 @@ import '@/app/globals.css';
 import { Header } from '@/components/layout/header';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { BackgroundCursor } from '@/components/ui/background-cursor';
-import { home, person } from '@/config/content';
 import { fontInter } from '@/config/font';
+import { DEFAULT_SEO } from '@/config/seo';
 import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import {
+    getMessages,
+    getTranslations,
+    setRequestLocale,
+} from 'next-intl/server';
 import { redirect } from 'next/navigation';
 
 export async function generateMetadata({
@@ -18,18 +22,20 @@ export async function generateMetadata({
 }) {
     const { locale } = await params;
 
+    const tSEO = await getTranslations({ locale, namespace: 'SEO' });
+
     return {
         metadataBase: new URL(SITE_URL),
-        title: home.title,
-        description: home.description,
+        ...DEFAULT_SEO,
         openGraph: {
-            title: `${person.firstName}'s Portfolio`,
-            description: 'Portfolio website showcasing my work.',
-            url: SITE_URL,
-            siteName: `${person.firstName}'s Portfolio`,
+            ...DEFAULT_SEO.openGraph,
+            title: tSEO('ogTitle'),
+            description: tSEO('ogDescription'),
+            siteName: tSEO('ogSiteName'),
             locale: locale === 'fr' ? 'fr_FR' : 'en_US',
-            type: 'website',
         },
+        title: tSEO('siteTitle'),
+        description: tSEO('siteDescription'),
         robots: {
             index: true,
             follow: true,

@@ -119,5 +119,15 @@
                 }
             }
         }
+    },
+    "/*9": "===== SEO =====",
+    "SEO": {
+        "siteTitle": "Portfolio de Yann THOBENA",
+        "siteDescription": "Site portfolio présentant mon travail en tant que Concepteur Développeur d'Applications",
+        "ogTitle": "Yann THOBENA — Portfolio",
+        "ogDescription": "Projets sélectionnés, design et développement.",
+        "ogSiteName": "Portfolio de Yann",
+        "twitterTitle": "Yann THOBENA — Portfolio",
+        "twitterDescription": "Concepteur Développeur d'Applications — travaux et projets"
     }
 }

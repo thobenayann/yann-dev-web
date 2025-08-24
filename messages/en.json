@@ -119,5 +119,15 @@
                 }
             }
         }
+    },
+    "/*9": "===== SEO =====",
+    "SEO": {
+        "siteTitle": "Yann THOBENA's Portfolio",
+        "siteDescription": "Portfolio website showcasing my work as an Application Designer & Developer",
+        "ogTitle": "Yann THOBENA — Portfolio",
+        "ogDescription": "Selected projects, design and development work.",
+        "ogSiteName": "Yann's Portfolio",
+        "twitterTitle": "Yann THOBENA — Portfolio",
+        "twitterDescription": "Application Designer & Developer — selected work and projects"
     }
 }

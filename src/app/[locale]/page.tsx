@@ -2,6 +2,7 @@ import { TranslatedHomeContent } from '@/components/i18n/translated-home-content
 import { getProjects } from '@/lib/mdx';
 import { setRequestLocale } from 'next-intl/server';
 
+import { DEFAULT_SEO } from '@/config/seo';
 import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
@@ -23,13 +24,13 @@ export async function generateMetadata({
     const ogImage = `${SITE_URL}/og?title=${encodeURIComponent(title)}`;
 
     return {
+        ...DEFAULT_SEO,
         title,
         description,
         openGraph: {
+            ...DEFAULT_SEO.openGraph,
             title,
             description,
-            type: 'website',
-            url: SITE_URL,
             images: [
                 {
                     url: ogImage,
@@ -38,7 +39,7 @@ export async function generateMetadata({
             ],
         },
         twitter: {
-            card: 'summary_large_image',
+            ...DEFAULT_SEO.twitter,
             title,
             description,
             images: [ogImage],
