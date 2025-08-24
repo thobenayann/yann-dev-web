@@ -177,9 +177,9 @@ const technologies = [
     },
 ];
 
-function shuffleArray(array: any[]) {
+function shuffleArray<T>(array: T[]): T[] {
     let currentIndex = array.length;
-    let randomIndex;
+    let randomIndex: number;
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
