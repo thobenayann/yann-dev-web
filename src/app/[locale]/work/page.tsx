@@ -1,11 +1,11 @@
 import { Projects } from '@/components/ui/projects';
 import { getProjects } from '@/lib/mdx';
 
-interface PageProps {
+export default async function WorkPage({
+    params,
+}: {
     params: Promise<{ locale: string }>;
-}
-
-export default async function WorkPage({ params }: PageProps) {
+}) {
     const { locale } = await params;
     const projects = await getProjects(locale);
 

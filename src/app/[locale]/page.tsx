@@ -1,6 +1,5 @@
 import { TranslatedHomeContent } from '@/components/i18n/translated-home-content';
 import { getProjects } from '@/lib/mdx';
-import { PageParams } from '@/types/next';
 import { setRequestLocale } from 'next-intl/server';
 
 import { baseURL } from '@/config/routes';
@@ -13,7 +12,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
     params,
-}: PageParams<{ locale: string }>) {
+}: {
+    params: Promise<{ locale: string }>;
+}) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'Home' });
 
@@ -55,7 +56,11 @@ export async function generateMetadata({
     };
 }
 
-export default async function Home({ params }: PageParams<{ locale: string }>) {
+export default async function Home({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
     const { locale } = await params;
     setRequestLocale(locale);
 
