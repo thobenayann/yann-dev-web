@@ -8,7 +8,93 @@
         "projects-link-label": "Lire l'étude de cas",
         "about-me": "À propos de moi",
         "technologies-title": "Ma stack technique",
-        "projects-title": "Mes projets"
+        "projects-title": "Mes projets",
+        "bento": {
+            "domains": {
+                "title": "Domaines d'expertise",
+                "items": [
+                    "Conception UX/UI",
+                    "Développement web",
+                    "DevOps",
+                    "API",
+                    "Commerce",
+                    "IA"
+                ],
+                "cards": [
+                    {
+                        "name": "Conception UX/UI",
+                        "body": "Concevoir des expériences utiles, simples et belles.",
+                        "slug": "ux-ui"
+                    },
+                    {
+                        "name": "Développement web",
+                        "body": "Sites et apps performants, accessibles et maintenables.",
+                        "slug": "web"
+                    },
+                    {
+                        "name": "DevOps",
+                        "body": "CI/CD, conteneurs, monitoring et automatisation.",
+                        "slug": "devops"
+                    },
+                    {
+                        "name": "API",
+                        "body": "APIs robustes, documentées et sécurisées.",
+                        "slug": "api"
+                    },
+                    {
+                        "name": "Commerce",
+                        "body": "Parcours d’achat fluides et KPI orientés business.",
+                        "slug": "commerce"
+                    },
+                    {
+                        "name": "IA",
+                        "body": "LLMs, RAG, embeddings et intégrations IA.",
+                        "slug": "ia"
+                    }
+                ]
+            },
+            "technologies": {
+                "title": "Technologies",
+                "items": [
+                    "React",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Docker",
+                    "TypeScript",
+                    "Linux",
+                    "GitHub",
+                    "PostgreSQL",
+                    "MySQL",
+                    "Zod",
+                    "OpenAI",
+                    "Gemini",
+                    "JavaScript",
+                    "CSS"
+                ]
+            },
+            "ai": {
+                "title": "Intégrations IA",
+                "items": [
+                    "OpenAI API",
+                    "Google Gemini",
+                    "Embeddings",
+                    "RAG",
+                    "Traduction",
+                    "Synthèse de contenu"
+                ]
+            },
+            "deployments": {
+                "title": "Déploiements fluides",
+                "items": [
+                    "CI/CD",
+                    "Préviews PR",
+                    "Analyse de performance",
+                    "Vercel",
+                    "Docker",
+                    "Monitoring"
+                ]
+            }
+        }
     },
 
     "/*1": "===== PAGE À PROPOS =====",

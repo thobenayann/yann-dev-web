@@ -8,7 +8,93 @@
         "projects-link-label": "Read the case study",
         "about-me": "About me",
         "technologies-title": "My tech stack",
-        "projects-title": "My projects"
+        "projects-title": "My projects",
+        "bento": {
+            "domains": {
+                "title": "Tech domains",
+                "items": [
+                    "UX/UI Design",
+                    "Web development",
+                    "DevOps",
+                    "API",
+                    "Commerce",
+                    "AI"
+                ],
+                "cards": [
+                    {
+                        "name": "UX/UI Design",
+                        "body": "Design useful, simple and beautiful experiences.",
+                        "slug": "ux-ui"
+                    },
+                    {
+                        "name": "Web development",
+                        "body": "Fast, accessible and maintainable sites & apps.",
+                        "slug": "web"
+                    },
+                    {
+                        "name": "DevOps",
+                        "body": "CI/CD, containers, monitoring and automation.",
+                        "slug": "devops"
+                    },
+                    {
+                        "name": "API",
+                        "body": "Robust, documented and secure APIs.",
+                        "slug": "api"
+                    },
+                    {
+                        "name": "Commerce",
+                        "body": "Smooth checkout flows and business KPIs.",
+                        "slug": "commerce"
+                    },
+                    {
+                        "name": "AI",
+                        "body": "LLMs, RAG, embeddings and AI integrations.",
+                        "slug": "ia"
+                    }
+                ]
+            },
+            "technologies": {
+                "title": "Technologies",
+                "items": [
+                    "React",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Docker",
+                    "TypeScript",
+                    "Linux",
+                    "GitHub",
+                    "PostgreSQL",
+                    "MySQL",
+                    "Zod",
+                    "OpenAI",
+                    "Gemini",
+                    "JavaScript",
+                    "CSS"
+                ]
+            },
+            "ai": {
+                "title": "AI integrations",
+                "items": [
+                    "OpenAI API",
+                    "Google Gemini",
+                    "Embeddings",
+                    "RAG",
+                    "Translation",
+                    "Content summarization"
+                ]
+            },
+            "deployments": {
+                "title": "Seamless deployments",
+                "items": [
+                    "CI/CD",
+                    "PR previews",
+                    "Performance analytics",
+                    "Vercel",
+                    "Docker",
+                    "Monitoring"
+                ]
+            }
+        }
     },
 
     "/*1": "===== ABOUT PAGE =====",
