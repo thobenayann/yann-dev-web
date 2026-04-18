@@ -1,6 +1,9 @@
+import { JsonLd } from '@/components/seo/json-ld';
 import { CareerTimeline } from '@/components/ui/career-timeline';
 import { person } from '@/config/content';
+import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
+import { breadcrumbSchema, profilePageSchema } from '@/lib/seo/schemas';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -99,6 +102,18 @@ export default async function AboutPage({ params }: Props) {
 
     return (
         <main className='container mx-auto px-6 md:px-10 py-16 space-y-24'>
+            <JsonLd
+                data={[
+                    profilePageSchema(locale),
+                    breadcrumbSchema([
+                        { name: 'Home', url: `${SITE_URL}/${locale}` },
+                        {
+                            name: t('title'),
+                            url: `${SITE_URL}/${locale}/about`,
+                        },
+                    ]),
+                ]}
+            />
 
             {/* ── 1. HERO BIO ────────────────────────────────────────── */}
             <section className='flex flex-col sm:flex-row items-start gap-8'>
