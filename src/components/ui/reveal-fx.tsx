@@ -69,6 +69,7 @@ export function RevealFx({
     // Gestion du déclencheur manuel
     React.useEffect(() => {
         if (trigger !== undefined) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsRevealed(trigger);
         }
     }, [trigger]);

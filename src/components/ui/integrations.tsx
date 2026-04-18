@@ -242,6 +242,7 @@ export function Integrations() {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setRandomTechs1(shuffleArray([...technologies]));
             setRandomTechs2(shuffleArray([...technologies]));
             setRandomTechs3(shuffleArray([...technologies]));
