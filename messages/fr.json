@@ -137,6 +137,10 @@
     "Work": {
         "title": "Projets",
         "description": "Découvrez mes projets de développement web, des applications full-stack aux sites web modernes et performants.",
+        "hero": {
+            "title": "Mes projets",
+            "subtitle": "Une sélection de mes réalisations — applications web, sites et intégrations IA."
+        },
         "viewProject": "Voir le projet",
         "backToProjects": "Retour aux projets",
         "projectDetails": {

@@ -137,6 +137,10 @@
     "Work": {
         "title": "Projects",
         "description": "Discover my web development projects, from full-stack applications to modern and performant websites.",
+        "hero": {
+            "title": "My projects",
+            "subtitle": "A curated selection of my work — web applications, websites and AI integrations."
+        },
         "viewProject": "View project",
         "backToProjects": "Back to projects",
         "projectDetails": {
