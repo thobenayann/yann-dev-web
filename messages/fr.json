@@ -130,7 +130,30 @@
     "/*2": "===== PAGE BLOG =====",
     "Blog": {
         "title": "Blog",
-        "description": "Découvrez mes articles sur le développement web, les technologies front-end et back-end, et mes expériences en tant que développeur full-stack."
+        "description": "Articles sur le développement web, l'IA et les retours d'expérience.",
+        "hero": {
+            "title": "Mes articles",
+            "subtitle": "Retours d'expérience, techniques et cas pratiques — 1 article par mois.",
+            "count": "{count, plural, =1 {# article} other {# articles}}"
+        },
+        "filters": {
+            "all": "Tous",
+            "ia": "IA & LLM",
+            "dev": "Dev",
+            "seo": "SEO",
+            "career": "Carrière"
+        },
+        "article": {
+            "backToBlog": "Retour au blog",
+            "readingTime": "{time} de lecture",
+            "publishedAt": "Publié le {date}",
+            "relatedTitle": "Articles liés"
+        },
+        "authorCard": {
+            "cta": "Ce cas vous parle ? Discutons de votre projet.",
+            "contact": "Me contacter",
+            "projects": "Voir mes projets"
+        }
     },
 
     "/*3": "===== PAGE PROJETS =====",

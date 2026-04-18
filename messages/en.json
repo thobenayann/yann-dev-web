@@ -130,7 +130,30 @@
     "/*2": "===== BLOG PAGE =====",
     "Blog": {
         "title": "Blog",
-        "description": "Discover my articles about web development, front-end and back-end technologies, and my experiences as a full-stack developer."
+        "description": "Articles on web development, AI and hands-on experience.",
+        "hero": {
+            "title": "Articles",
+            "subtitle": "Experience reports, techniques and real-world cases — 1 article per month.",
+            "count": "{count, plural, =1 {# article} other {# articles}}"
+        },
+        "filters": {
+            "all": "All",
+            "ia": "AI & LLM",
+            "dev": "Dev",
+            "seo": "SEO",
+            "career": "Career"
+        },
+        "article": {
+            "backToBlog": "Back to blog",
+            "readingTime": "{time} read",
+            "publishedAt": "Published {date}",
+            "relatedTitle": "Related articles"
+        },
+        "authorCard": {
+            "cta": "Does this case resonate with you? Let's talk about your project.",
+            "contact": "Contact me",
+            "projects": "See my projects"
+        }
     },
 
     "/*3": "===== PROJECTS PAGE =====",
