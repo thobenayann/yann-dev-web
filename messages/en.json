@@ -99,22 +99,31 @@
 
     "/*1": "===== ABOUT PAGE =====",
     "About": {
-        "title": "About me",
-        "description": "Meet Yann THOBENA, Application Designer & Developer from Toulouse, France",
-        "intro": {
-            "title": "Introduction"
+        "title": "About Me",
+        "description": "Meet Yann THOBENA, Application Designer & Developer and AI Expert based in Toulouse, France",
+        "hero": {
+            "bio": "Fullstack developer since 2020, I expanded into AI expertise from 2022 onwards. Today I support Airbus in their AI transformation while continuing to build custom web applications at Ipanova.",
+            "location": "Toulouse, France · IPANOVA",
+            "roles": {
+                "cda": "Application Designer & Developer",
+                "ai": "AI Expert",
+                "aiStatus": "On mission"
+            }
         },
-        "work": {
-            "title": "Work Experience"
+        "timeline": {
+            "title": "My journey"
         },
-        "studies": {
-            "title": "Education & Training"
+        "skills": {
+            "title": "Skills",
+            "dev": "Dev Stack",
+            "ai": "AI & Tools",
+            "softSkills": "Soft Skills"
         },
-        "technical": {
-            "title": "Technical skills"
-        },
-        "calendar": {
-            "schedule": "Schedule a call"
+        "cta": {
+            "title": "Let's talk",
+            "subtitle": "Open to opportunities, collaborations and conversations.",
+            "linkedin": "LinkedIn",
+            "email": "Email"
         }
     },
 

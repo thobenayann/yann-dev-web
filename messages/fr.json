@@ -100,21 +100,30 @@
     "/*1": "===== PAGE À PROPOS =====",
     "About": {
         "title": "À propos de moi",
-        "description": "Découvrez Yann THOBENA, Concepteur Développeur d'Applications de Toulouse, France",
-        "intro": {
-            "title": "Introduction"
+        "description": "Découvrez Yann THOBENA, Concepteur Développeur d'Applications & Expert IA basé à Toulouse, France",
+        "hero": {
+            "bio": "Développeur fullstack depuis 2020, j'ai fait évoluer mon expertise vers l'IA dès 2022. Aujourd'hui j'accompagne Airbus dans sa transformation IA tout en continuant à créer des applications web sur mesure chez Ipanova.",
+            "location": "Toulouse, France · IPANOVA",
+            "roles": {
+                "cda": "Concepteur Développeur d'Applications",
+                "ai": "Expert IA",
+                "aiStatus": "En mission"
+            }
         },
-        "work": {
-            "title": "Expérience professionnelle"
+        "timeline": {
+            "title": "Mon parcours"
         },
-        "studies": {
-            "title": "Formation & Éducation"
+        "skills": {
+            "title": "Compétences",
+            "dev": "Dev Stack",
+            "ai": "IA & Outils",
+            "softSkills": "Savoir-faire"
         },
-        "technical": {
-            "title": "Compétences techniques"
-        },
-        "calendar": {
-            "schedule": "Planifier un appel"
+        "cta": {
+            "title": "Discutons",
+            "subtitle": "Ouvert aux opportunités, collaborations et échanges.",
+            "linkedin": "LinkedIn",
+            "email": "Email"
         }
     },
 
