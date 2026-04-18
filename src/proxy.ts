@@ -1,11 +1,16 @@
 import createMiddleware from 'next-intl/middleware';
 import { defaultLocale, localePrefix, locales } from './i18n/config';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware({
+const handleI18nRouting = createMiddleware({
     locales,
     defaultLocale,
     localePrefix,
 });
+
+export function proxy(request: NextRequest) {
+    return handleI18nRouting(request);
+}
 
 export const config = {
     // Match all pathnames except for
