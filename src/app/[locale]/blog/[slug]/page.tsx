@@ -19,7 +19,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { compileMDX } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import { ArrowLeft } from 'lucide-react';
@@ -86,6 +86,7 @@ const mdxOptions = {
             ],
         ] as never[],
     },
+    parseFrontmatter: false,
 };
 
 export default async function BlogSlugPage({ params }: Props) {
@@ -100,6 +101,12 @@ export default async function BlogSlugPage({ params }: Props) {
     const headings = extractHeadings(content);
     const t = await getTranslations({ locale, namespace: 'Blog' });
     const tNav = await getTranslations({ locale, namespace: 'Navigation' });
+
+    const { content: mdxContent } = await compileMDX({
+        source: content,
+        components: getMDXComponents(),
+        options: mdxOptions,
+    });
 
     // Related articles: same tag, different slug, max 2
     const allPosts = await getPosts(locale);
@@ -194,11 +201,7 @@ export default async function BlogSlugPage({ params }: Props) {
                     {/* Article body */}
                     <article className='min-w-0 flex-1 max-w-2xl space-y-10'>
                         <div className='prose prose-invert max-w-none'>
-                            <MDXRemote
-                                source={content}
-                                components={getMDXComponents()}
-                                options={mdxOptions}
-                            />
+                            {mdxContent}
                         </div>
 
                         {/* Author card */}
