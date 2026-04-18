@@ -1,6 +1,6 @@
 'use client';
 
-import { Heading } from '@/lib/blog';
+import { Heading } from '@/lib/blog-types';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 

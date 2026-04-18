@@ -1,5 +1,5 @@
 import { ArticleCard } from './article-card';
-import { Post } from '@/lib/blog';
+import { Post } from '@/lib/blog-types';
 
 type Props = {
     posts: Post[];

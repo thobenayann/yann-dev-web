@@ -1,6 +1,6 @@
 'use client';
 
-import { Post, getTagConfig } from '@/lib/blog';
+import { Post, getTagConfig } from '@/lib/blog-types';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 

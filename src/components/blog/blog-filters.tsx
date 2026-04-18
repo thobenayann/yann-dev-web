@@ -2,7 +2,7 @@
 
 import { ArticleCard } from './article-card';
 import { ArticleCardFeatured } from './article-card-featured';
-import { Post } from '@/lib/blog';
+import { Post } from '@/lib/blog-types';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
