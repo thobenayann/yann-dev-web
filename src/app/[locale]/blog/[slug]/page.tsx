@@ -19,7 +19,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { compileMDX } from 'next-mdx-remote/rsc';
+import { evaluate } from '@mdx-js/mdx';
+import * as jsxRuntime from 'react/jsx-runtime';
+import * as jsxDevRuntime from 'react/jsx-dev-runtime';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import { ArrowLeft } from 'lucide-react';
@@ -73,21 +75,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-const mdxOptions = {
-    mdxOptions: {
-        rehypePlugins: [
-            rehypeSlug,
-            [
-                rehypePrettyCode,
-                {
-                    theme: 'github-dark-dimmed',
-                    keepBackground: true,
-                },
-            ],
-        ] as never[],
-    },
-    parseFrontmatter: false,
-};
+const isDev = process.env.NODE_ENV === 'development';
+
+const rehypePlugins = [
+    rehypeSlug,
+    [
+        rehypePrettyCode,
+        {
+            theme: 'github-dark-dimmed',
+            keepBackground: true,
+        },
+    ],
+] as never[];
 
 export default async function BlogSlugPage({ params }: Props) {
     const { locale, slug } = await params;
@@ -102,11 +101,15 @@ export default async function BlogSlugPage({ params }: Props) {
     const t = await getTranslations({ locale, namespace: 'Blog' });
     const tNav = await getTranslations({ locale, namespace: 'Navigation' });
 
-    const { content: mdxContent } = await compileMDX({
-        source: content,
-        components: getMDXComponents(),
-        options: mdxOptions,
+    const runtime = isDev
+        ? { ...jsxRuntime, ...jsxDevRuntime }
+        : jsxRuntime;
+    const evaluated = await evaluate(content, {
+        ...(runtime as unknown as Parameters<typeof evaluate>[1]),
+        development: isDev,
+        rehypePlugins,
     });
+    const MDXContent = evaluated.default;
 
     // Related articles: same tag, different slug, max 2
     const allPosts = await getPosts(locale);
@@ -201,7 +204,7 @@ export default async function BlogSlugPage({ params }: Props) {
                     {/* Article body */}
                     <article className='min-w-0 flex-1 max-w-2xl space-y-10'>
                         <div className='prose prose-invert max-w-none'>
-                            {mdxContent}
+                            <MDXContent components={getMDXComponents()} />
                         </div>
 
                         {/* Author card */}
