@@ -121,3 +121,27 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
         })),
     };
 }
+
+export function articleSchema(params: {
+    locale: string;
+    slug: string;
+    title: string;
+    summary: string;
+    datePublished: string;
+    image?: string;
+}) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: params.title,
+        description: params.summary,
+        url: `${SITE_URL}/${params.locale}/blog/${params.slug}`,
+        datePublished: params.datePublished,
+        image: params.image
+            ? `${SITE_URL}${params.image}`
+            : `${SITE_URL}/og?title=${encodeURIComponent(params.title)}`,
+        inLanguage: params.locale === 'fr' ? 'fr-FR' : 'en-US',
+        author: { '@id': `${SITE_URL}/#person` },
+        publisher: { '@id': `${SITE_URL}/#person` },
+    };
+}
