@@ -129,12 +129,63 @@ export async function getProjects(locale: string = 'fr'): Promise<Project[]> {
 }
 
 /**
- * Récupère un projet spécifique par son slug
+ * Récupère un projet par son slug avec le contenu MDX brut (non compilé).
+ * Utilisé par la route `/work/[slug]` qui rend via `next-mdx-remote/rsc`.
  */
 export async function getProjectBySlug(
     slug: string,
     locale: string = 'fr'
 ): Promise<Project | null> {
-    const projects = await getProjects(locale);
-    return projects.find((project) => project.slug === slug) || null;
+    const projectsDir = path.join(
+        process.cwd(),
+        'src',
+        'app',
+        '[locale]',
+        'work',
+        'projects',
+        locale
+    );
+    const filePath = path.join(projectsDir, `${slug}.mdx`);
+    try {
+        const rawContent = await fs.readFile(filePath, 'utf-8');
+        const { data, content } = matter(rawContent);
+        const parsed = ProjectMetadataSchema.safeParse(data);
+        const metadata: ProjectMetadata = parsed.success
+            ? parsed.data
+            : {
+                  title: String(data.title ?? ''),
+                  publishedAt: String(
+                      data.publishedAt ?? new Date().toISOString()
+                  ),
+                  summary: String(data.summary ?? ''),
+                  image: data.image,
+                  images: Array.isArray(data.images) ? data.images : [],
+                  tag: data.tag,
+                  team: Array.isArray(data.team) ? data.team : [],
+                  link: data.link,
+                  links: Array.isArray(data.links) ? data.links : [],
+              };
+        return { metadata, slug, content };
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Liste les slugs disponibles pour une locale donnée (utilisé par generateStaticParams).
+ */
+export async function getProjectSlugs(
+    locale: string = 'fr'
+): Promise<string[]> {
+    const projectsDir = path.join(
+        process.cwd(),
+        'src',
+        'app',
+        '[locale]',
+        'work',
+        'projects',
+        locale
+    );
+    const mdxFiles = await getMDXFiles(projectsDir);
+    return mdxFiles.map((f) => path.basename(f, path.extname(f)));
 }
