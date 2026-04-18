@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -161,4 +162,32 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* ── Prose dark theme customisations ─────────────────────────── */
+.prose {
+    --tw-prose-body: oklch(0.85 0.01 0);
+    --tw-prose-headings: oklch(0.98 0 0);
+    --tw-prose-links: oklch(0.75 0.18 210);
+    --tw-prose-code: oklch(0.85 0.05 220);
+    --tw-prose-quotes: oklch(0.7 0.01 0);
+    --tw-prose-counters: oklch(0.7 0.01 0);
+    --tw-prose-bullets: oklch(0.5 0.01 0);
+    --tw-prose-hr: oklch(0.25 0.01 0);
+    --tw-prose-th-borders: oklch(0.3 0.01 0);
+    --tw-prose-td-borders: oklch(0.2 0.01 0);
+}
+
+.prose blockquote {
+    border-left: 3px solid oklch(0.541 0.281 293);
+    padding-left: 1rem;
+    font-style: normal;
+    color: oklch(0.75 0.01 0);
+}
+
+/* Shiki code blocks — retirer le background inline (géré par nous) */
+.prose pre {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
