@@ -65,7 +65,7 @@ export default async function BlogPage({ params }: Props) {
                 locale={locale}
                 tags={tags}
                 allLabel={t('filters.all')}
-                readLabel={t('viewProject' as never) ?? 'Lire →'}
+                readLabel={t('readMore')}
             />
         </main>
     );

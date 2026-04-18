@@ -131,6 +131,7 @@
     "Blog": {
         "title": "Blog",
         "description": "Articles on web development, AI and hands-on experience.",
+        "readMore": "Read →",
         "hero": {
             "title": "Articles",
             "subtitle": "Experience reports, techniques and real-world cases — 1 article per month.",

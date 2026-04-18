@@ -131,6 +131,7 @@
     "Blog": {
         "title": "Blog",
         "description": "Articles sur le développement web, l'IA et les retours d'expérience.",
+        "readMore": "Lire →",
         "hero": {
             "title": "Mes articles",
             "subtitle": "Retours d'expérience, techniques et cas pratiques — 1 article par mois.",
