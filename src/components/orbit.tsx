@@ -1,5 +1,5 @@
 import OrbitingCircles from '@/components/magicui/orbiting-circles';
-import type { IconProps } from '@radix-ui/react-icons/dist/types';
+type IconProps = React.SVGProps<SVGSVGElement>;
 import { motion } from 'framer-motion';
 import { AiOutlineDocker } from 'react-icons/ai';
 import { FaGithub, FaLaptop } from 'react-icons/fa';

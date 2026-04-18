@@ -2,8 +2,9 @@
 
 import { AnimatedBeam } from '@/components/magicui/animated-beam';
 import { cn } from '@/lib/utils';
-import type { IconProps } from '@radix-ui/react-icons/dist/types';
 import React, { forwardRef, useRef } from 'react';
+
+type IconProps = React.SVGProps<SVGSVGElement>;
 
 const Circle = forwardRef<
     HTMLDivElement,
