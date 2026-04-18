@@ -382,7 +382,7 @@ return {
     "relatedTitle": "Articles liés"
   },
   "authorCard": {
-    "cta": "Besoin d'intégrer ce type de solution ?",
+    "cta": "Ce cas vous parle ? Discutons de votre projet.",
     "contact": "Me contacter",
     "projects": "Voir mes projets"
   }
@@ -414,7 +414,7 @@ return {
     "relatedTitle": "Related articles"
   },
   "authorCard": {
-    "cta": "Need to integrate this kind of solution?",
+    "cta": "Does this case resonate with you? Let's talk about your project.",
     "contact": "Contact me",
     "projects": "See my projects"
   }
