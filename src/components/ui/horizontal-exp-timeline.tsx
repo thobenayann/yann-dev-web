@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
+import { Sparkles } from './sparkles';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -169,6 +170,9 @@ export function HorizontalExpTimeline() {
                     );
                 })}
             </div>
+
+            {/* Sparkles */}
+            <Sparkles count={14} className='h-16 w-full mt-2 overflow-hidden rounded-xl' />
         </motion.div>
     );
 }

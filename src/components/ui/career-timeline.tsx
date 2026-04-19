@@ -149,26 +149,26 @@ export function CareerTimeline() {
     const locale = useLocale();
 
     return (
-        <div className='relative w-full max-w-2xl mx-auto'>
-            {/* Ligne de fond */}
-            <div className='absolute left-[7px] top-0 bottom-0 w-px bg-white/10' />
+        <div className='w-full max-w-2xl mx-auto'>
+            {/* Jalons — relative container confines the absolute lines */}
+            <div className='relative space-y-8'>
+                {/* Ligne de fond */}
+                <div className='absolute left-[7px] top-0 bottom-0 w-px bg-white/10' />
 
-            {/* Ligne colorée animée */}
-            <motion.div
-                className='absolute left-[7px] top-0 w-px origin-top'
-                style={{
-                    background:
-                        'linear-gradient(to bottom, oklch(0.70 0.15 185), oklch(0.541 0.281 293) 45%, oklch(0.65 0.22 255) 70%, oklch(0.75 0.18 210))',
-                    filter: 'blur(0.5px)',
-                }}
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            />
+                {/* Ligne colorée animée */}
+                <motion.div
+                    className='absolute left-[7px] top-0 w-px origin-top'
+                    style={{
+                        background:
+                            'linear-gradient(to bottom, oklch(0.70 0.15 185), oklch(0.541 0.281 293) 45%, oklch(0.65 0.22 255) 70%, oklch(0.75 0.18 210))',
+                        filter: 'blur(0.5px)',
+                    }}
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                />
 
-            {/* Jalons */}
-            <div className='space-y-8 relative'>
                 {MILESTONES.map((milestone, index) => (
                     <div key={milestone.id} className='flex items-start gap-4'>
                         <TimelineNode
@@ -185,7 +185,7 @@ export function CareerTimeline() {
                 ))}
             </div>
 
-            {/* Horizontal neon expertise timeline */}
+            {/* Horizontal neon expertise timeline + sparkles */}
             <HorizontalExpTimeline />
         </div>
     );
