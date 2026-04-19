@@ -1,6 +1,7 @@
 import { Project } from '@/types/mdx';
 import { useTranslations } from 'next-intl';
 import { HeroSection } from '../layout/hero-section';
+import { Integrations } from '../ui/integrations';
 import { Projects } from '../ui/projects';
 import { SecondaryTitle } from '../ui/secondary-title';
 
@@ -24,6 +25,15 @@ export function TranslatedHomeContent({
                 locale={locale}
             />
 
+            {/* Technologies Section */}
+            <section className='mb-20'>
+                <div className='container mx-auto px-6 md:px-10 mb-8'>
+                    <SecondaryTitle text={tHome('technologies-title')} />
+                </div>
+                <Integrations />
+            </section>
+
+            {/* Projects Section */}
             <section className='container mx-auto px-6 md:px-10'>
                 <SecondaryTitle text={tHome('projects-title')} />
                 <Projects projects={projects} locale={locale} />

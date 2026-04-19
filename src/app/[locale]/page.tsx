@@ -1,9 +1,9 @@
 import { TranslatedHomeContent } from '@/components/i18n/translated-home-content';
 import { getProjects } from '@/lib/mdx';
-import { PageParams } from '@/types/next';
 import { setRequestLocale } from 'next-intl/server';
 
-import { baseURL } from '@/config/routes';
+import { DEFAULT_SEO } from '@/config/seo';
+import { SITE_URL } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
 
@@ -13,22 +13,24 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
     params,
-}: PageParams<{ locale: string }>) {
+}: {
+    params: Promise<{ locale: string }>;
+}) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'Home' });
 
     const title = t('title');
     const description = t('description');
-    const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
+    const ogImage = `${SITE_URL}/og?title=${encodeURIComponent(title)}`;
 
     return {
+        ...DEFAULT_SEO,
         title,
         description,
         openGraph: {
+            ...DEFAULT_SEO.openGraph,
             title,
             description,
-            type: 'website',
-            url: `https://${baseURL}`,
             images: [
                 {
                     url: ogImage,
@@ -37,17 +39,17 @@ export async function generateMetadata({
             ],
         },
         twitter: {
-            card: 'summary_large_image',
+            ...DEFAULT_SEO.twitter,
             title,
             description,
             images: [ogImage],
         },
         alternates: {
-            canonical: `https://${baseURL}`,
+            canonical: SITE_URL,
             languages: routing.locales.reduce(
                 (acc, locale) => ({
                     ...acc,
-                    [locale]: `https://${baseURL}/${locale}`,
+                    [locale]: `${SITE_URL}/${locale}`,
                 }),
                 {}
             ),
@@ -55,7 +57,11 @@ export async function generateMetadata({
     };
 }
 
-export default async function Home({ params }: PageParams<{ locale: string }>) {
+export default async function Home({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}) {
     const { locale } = await params;
     setRequestLocale(locale);
 

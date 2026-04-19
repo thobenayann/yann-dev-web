@@ -1,5 +1,7 @@
-import { baseURL, routes as routesConfig, type Route } from '@/config/routes';
-import { getPosts } from '@/utils/mdx-content-manager';
+import { routes as routesConfig } from '@/config/routes';
+import { SITE_URL } from '@/config/site';
+import { routing } from '@/i18n/routing';
+import { getProjects } from '@/lib/mdx';
 import { MetadataRoute } from 'next';
 
 /**
@@ -7,35 +9,35 @@ import { MetadataRoute } from 'next';
  * @returns A sitemap configuration object that Next.js will automatically transform to XML
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    // Get all blog posts and their last modification dates
-    const blogs = (await getPosts(['src', 'app', 'blog', 'posts'])).map(
-        (post) => ({
-            url: `https://${baseURL}/blog/${post.slug}`,
-            lastModified: post.metadata.publishedAt,
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
+    // Blog posts (none for now) – keep empty array to be extended later
+    const blogs: MetadataRoute.Sitemap = [];
+
+    // Work projects per locale
+    const worksPerLocale = await Promise.all(
+        routing.locales.map(async (locale) => {
+            const projects = await getProjects(locale);
+            return projects.map((post) => ({
+                url: `${SITE_URL}/${locale}/work/${post.slug}`,
+                lastModified: post.metadata.publishedAt,
+                changeFrequency: 'monthly' as const,
+                priority: 0.7,
+            }));
         })
     );
+    const works = worksPerLocale.flat();
 
-    // Get all work projects and their last modification dates
-    const works = (await getPosts(['src', 'app', 'work', 'projects'])).map(
-        (post) => ({
-            url: `https://${baseURL}/work/${post.slug}`,
-            lastModified: post.metadata.publishedAt,
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
-        })
+    // Active routes replicated per locale
+    const now = new Date().toISOString().split('T')[0];
+    const activeRoutes = routing.locales.flatMap((locale) =>
+        Object.entries(routesConfig)
+            .filter(([, route]) => route.isEnabled)
+            .map(([path]) => ({
+                url: `${SITE_URL}/${locale}${path === '/' ? '' : path}`,
+                lastModified: now,
+                changeFrequency: 'daily' as const,
+                priority: path === '/' ? 1.0 : 0.9,
+            }))
     );
-
-    // Get all active routes from the configuration
-    const activeRoutes = Object.entries(routesConfig)
-        .filter(([, route]: [string, Route]) => route.isEnabled)
-        .map(([path]) => ({
-            url: `https://${baseURL}${path === '/' ? '' : path}`,
-            lastModified: new Date().toISOString().split('T')[0],
-            changeFrequency: 'daily' as const,
-            priority: path === '/' ? 1.0 : 0.9,
-        }));
 
     return [...activeRoutes, ...blogs, ...works];
 }

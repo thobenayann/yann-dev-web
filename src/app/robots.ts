@@ -1,4 +1,4 @@
-import { baseURL } from '@/config/routes';
+import { SITE_URL } from '@/config/site';
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/private/', '/api/'],
         },
-        sitemap: `https://${baseURL}/sitemap.xml`,
-        host: `https://${baseURL}`,
+        sitemap: `${SITE_URL}/sitemap.xml`,
+        host: SITE_URL,
     };
 }

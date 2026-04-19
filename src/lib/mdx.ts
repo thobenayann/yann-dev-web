@@ -1,4 +1,5 @@
 import { Project, ProjectMetadata } from '@/types/mdx';
+import { ProjectMetadataSchema } from '@/types/mdx.schema';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -28,18 +29,23 @@ async function readMDXFile(filePath: string): Promise<{
         const rawContent = await fs.readFile(filePath, 'utf-8');
         const { data, content } = matter(rawContent);
 
-        // Valide et transforme les métadonnées
-        const metadata: ProjectMetadata = {
-            title: data.title || '',
-            publishedAt: data.publishedAt || new Date().toISOString(),
-            summary: data.summary || '',
-            image: data.image,
-            images: data.images || [],
-            tag: data.tag,
-            team: data.team || [],
-            link: data.link,
-            links: data.links || [],
-        };
+        // Valider et normaliser les métadonnées via Zod
+        const parsed = ProjectMetadataSchema.safeParse(data);
+        const metadata: ProjectMetadata = parsed.success
+            ? parsed.data
+            : {
+                  title: String(data.title ?? ''),
+                  publishedAt: String(
+                      data.publishedAt ?? new Date().toISOString()
+                  ),
+                  summary: String(data.summary ?? ''),
+                  image: data.image,
+                  images: Array.isArray(data.images) ? data.images : [],
+                  tag: data.tag,
+                  team: Array.isArray(data.team) ? data.team : [],
+                  link: data.link,
+                  links: Array.isArray(data.links) ? data.links : [],
+              };
 
         // Sérialise le contenu MDX
         const mdxSource = await serialize(content, {

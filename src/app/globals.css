@@ -9,6 +9,24 @@
     --font-family-mono: var(--font-inter), ui-monospace, monospace;
 }
 
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
+@keyframes marquee-vertical {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(calc(-100% - var(--gap)));
+    }
+}
+
 @theme inline {
     /* Colors */
     --color-brand: var(--brand-color);
