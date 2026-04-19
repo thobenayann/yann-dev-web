@@ -8,6 +8,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Github, Linkedin, Code2, Bot, Users } from 'lucide-react';
+import { SecondaryTitle } from '@/components/ui/secondary-title';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -189,24 +190,26 @@ export default async function AboutPage({ params }: Props) {
 
             {/* ── 2. CAREER TIMELINE ───────────────────────────────── */}
             <section>
-                <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-10'>
-                    {t('timeline.title')}
-                </h2>
+                <SecondaryTitle text={t('timeline.title')} showCursor={false} />
                 <CareerTimeline />
             </section>
 
             {/* ── 3. COMPÉTENCES ───────────────────────────────────── */}
             <section>
-                <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-8'>
-                    {t('skills.title')}
-                </h2>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                <SecondaryTitle text={t('skills.title')} showCursor={false} />
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                     {/* Dev Stack */}
-                    <div className='rounded-xl border border-purple-500/20 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-purple-400 mb-4 flex items-center gap-1.5'>
-                            <Code2 className='h-4 w-4' /> {t('skills.dev')}
-                        </h3>
-                        <div className='flex flex-wrap gap-2'>
+                    <div className='group relative rounded-2xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 via-purple-500/5 to-transparent p-6 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.541_0.281_293/0.3)]'>
+                        <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                        <div className='relative flex items-center gap-3 mb-6'>
+                            <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/15 border border-purple-500/30 group-hover:bg-purple-500/25 group-hover:shadow-[0_0_20px_oklch(0.541_0.281_293/0.4)] transition-all duration-300'>
+                                <Code2 className='h-6 w-6 text-purple-400' />
+                            </div>
+                            <h3 className='text-base font-semibold text-purple-300'>
+                                {t('skills.dev')}
+                            </h3>
+                        </div>
+                        <div className='relative flex flex-wrap gap-2'>
                             {SKILLS.dev.map((s) => (
                                 <PillTag key={s} label={s} color='purple' />
                             ))}
@@ -214,11 +217,17 @@ export default async function AboutPage({ params }: Props) {
                     </div>
 
                     {/* IA & Outils */}
-                    <div className='rounded-xl border border-cyan-400/20 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-cyan-400 mb-4 flex items-center gap-1.5'>
-                            <Bot className='h-4 w-4' /> {t('skills.ai')}
-                        </h3>
-                        <div className='flex flex-wrap gap-2'>
+                    <div className='group relative rounded-2xl border border-cyan-400/20 bg-gradient-to-b from-cyan-400/10 via-cyan-400/5 to-transparent p-6 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.75_0.18_210/0.3)]'>
+                        <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                        <div className='relative flex items-center gap-3 mb-6'>
+                            <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 group-hover:bg-cyan-400/25 group-hover:shadow-[0_0_20px_oklch(0.75_0.18_210/0.4)] transition-all duration-300'>
+                                <Bot className='h-6 w-6 text-cyan-400' />
+                            </div>
+                            <h3 className='text-base font-semibold text-cyan-300'>
+                                {t('skills.ai')}
+                            </h3>
+                        </div>
+                        <div className='relative flex flex-wrap gap-2'>
                             {SKILLS.ai.map((s) => (
                                 <PillTag key={s} label={s} color='cyan' />
                             ))}
@@ -226,11 +235,17 @@ export default async function AboutPage({ params }: Props) {
                     </div>
 
                     {/* Savoir-faire */}
-                    <div className='rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-muted-foreground mb-4 flex items-center gap-1.5'>
-                            <Users className='h-4 w-4' /> {t('skills.softSkills')}
-                        </h3>
-                        <div className='flex flex-wrap gap-2'>
+                    <div className='group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 via-white/4 to-transparent p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_rgba(255,255,255,0.08)]'>
+                        <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-white/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                        <div className='relative flex items-center gap-3 mb-6'>
+                            <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-white/8 border border-white/15 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300'>
+                                <Users className='h-6 w-6 text-muted-foreground group-hover:text-foreground/80 transition-colors' />
+                            </div>
+                            <h3 className='text-base font-semibold text-foreground/70 group-hover:text-foreground/90 transition-colors'>
+                                {t('skills.softSkills')}
+                            </h3>
+                        </div>
+                        <div className='relative flex flex-wrap gap-2'>
                             {SKILLS.softSkills.map((s) => (
                                 <PillTag key={s} label={s} color='neutral' />
                             ))}

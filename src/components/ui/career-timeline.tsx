@@ -121,7 +121,7 @@ function MilestoneCard({
         >
             <p
                 className={cn(
-                    'text-xs font-semibold uppercase tracking-wider mb-1',
+                    'text-sm font-semibold uppercase tracking-wider mb-1',
                     DATE_COLOR[milestone.phase]
                 )}
             >
@@ -180,7 +180,7 @@ function ExperienceBadge({
                 >
                     {durationStr}
                 </p>
-                <p className='text-xs text-muted-foreground'>{label}</p>
+                <p className='text-sm text-muted-foreground'>{label}</p>
             </div>
         </div>
     );
@@ -192,7 +192,7 @@ export function CareerTimeline() {
     const locale = useLocale();
 
     return (
-        <div className='relative w-full'>
+        <div className='relative w-full max-w-2xl mx-auto'>
             {/* Ligne de fond */}
             <div className='absolute left-[7px] top-0 bottom-0 w-px bg-white/10' />
 

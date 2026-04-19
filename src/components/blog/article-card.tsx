@@ -47,7 +47,7 @@ export function ArticleCard({ post, locale }: Props) {
                     </h3>
 
                     {/* Excerpt */}
-                    <p className='text-sm text-muted-foreground line-clamp-3 leading-relaxed'>
+                    <p className='text-base text-muted-foreground line-clamp-3 leading-relaxed'>
                         {metadata.summary}
                     </p>
                 </div>
