@@ -1,4 +1,5 @@
 import '@/app/globals.css';
+import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { JsonLd } from '@/components/seo/json-ld';
 import { ThemeProvider } from '@/components/theme/theme-provider';
@@ -88,6 +89,7 @@ export default async function RootLayout({
                             <div className='w-full h-full flex flex-col'>
                                 <Header />
                                 {children}
+                                <Footer locale={locale} />
                             </div>
                         </BackgroundCursor>
                     </ThemeProvider>

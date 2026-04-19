@@ -243,6 +243,24 @@
             }
         }
     },
+    "/*9b": "===== FOOTER =====",
+    "Footer": {
+        "tagline": "Développeur Fullstack & Expert IA basé à Toulouse. Je conçois et développe des applications web modernes.",
+        "rights": "Tous droits réservés.",
+        "nav": {
+            "title": "Navigation",
+            "home": "Accueil",
+            "about": "À propos",
+            "work": "Projets",
+            "blog": "Blog"
+        },
+        "legal": {
+            "title": "Légal",
+            "mentions": "Mentions légales",
+            "privacy": "Confidentialité"
+        }
+    },
+
     "/*9": "===== SEO =====",
     "SEO": {
         "siteTitle": "Portfolio de Yann THOBENA",

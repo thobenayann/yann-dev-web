@@ -243,6 +243,24 @@
             }
         }
     },
+    "/*9b": "===== FOOTER =====",
+    "Footer": {
+        "tagline": "Fullstack Developer & AI Expert based in Toulouse. I design and build modern web applications.",
+        "rights": "All rights reserved.",
+        "nav": {
+            "title": "Navigation",
+            "home": "Home",
+            "about": "About",
+            "work": "Projects",
+            "blog": "Blog"
+        },
+        "legal": {
+            "title": "Legal",
+            "mentions": "Legal Notice",
+            "privacy": "Privacy Policy"
+        }
+    },
+
     "/*9": "===== SEO =====",
     "SEO": {
         "siteTitle": "Yann THOBENA's Portfolio",
