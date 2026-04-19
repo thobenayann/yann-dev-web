@@ -7,7 +7,7 @@ import { breadcrumbSchema, profilePageSchema } from '@/lib/seo/schemas';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Code2, Bot, Users } from 'lucide-react';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -101,7 +101,7 @@ export default async function AboutPage({ params }: Props) {
     const t = await getTranslations({ locale, namespace: 'About' });
 
     return (
-        <main className='container mx-auto px-6 md:px-10 py-16 space-y-24'>
+        <main className='container mx-auto px-6 md:px-10 pt-24 pb-16 space-y-24'>
             <JsonLd
                 data={[
                     profilePageSchema(locale),
@@ -135,10 +135,10 @@ export default async function AboutPage({ params }: Props) {
                     {/* Badges de rôle */}
                     <div className='flex flex-wrap gap-2'>
                         <span className='inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm font-medium text-purple-300'>
-                            💜 {t('hero.roles.cda')}
+                            <Code2 className='h-3.5 w-3.5' /> {t('hero.roles.cda')}
                         </span>
                         <span className='inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-300'>
-                            🤖 {t('hero.roles.ai')}
+                            <Bot className='h-3.5 w-3.5' /> {t('hero.roles.ai')}
                             <span className='flex items-center gap-1 ml-1'>
                                 <span className='h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse' />
                                 <span className='text-xs text-green-400'>
@@ -189,7 +189,7 @@ export default async function AboutPage({ params }: Props) {
 
             {/* ── 2. CAREER TIMELINE ───────────────────────────────── */}
             <section>
-                <h2 className='text-xl font-semibold tracking-tight mb-10'>
+                <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-10'>
                     {t('timeline.title')}
                 </h2>
                 <CareerTimeline />
@@ -197,14 +197,14 @@ export default async function AboutPage({ params }: Props) {
 
             {/* ── 3. COMPÉTENCES ───────────────────────────────────── */}
             <section>
-                <h2 className='text-xl font-semibold tracking-tight mb-8'>
+                <h2 className='text-2xl md:text-3xl font-bold tracking-tight mb-8'>
                     {t('skills.title')}
                 </h2>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                     {/* Dev Stack */}
                     <div className='rounded-xl border border-purple-500/20 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-purple-400 mb-4'>
-                            💜 {t('skills.dev')}
+                        <h3 className='text-sm font-semibold text-purple-400 mb-4 flex items-center gap-1.5'>
+                            <Code2 className='h-4 w-4' /> {t('skills.dev')}
                         </h3>
                         <div className='flex flex-wrap gap-2'>
                             {SKILLS.dev.map((s) => (
@@ -215,8 +215,8 @@ export default async function AboutPage({ params }: Props) {
 
                     {/* IA & Outils */}
                     <div className='rounded-xl border border-cyan-400/20 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-cyan-400 mb-4'>
-                            🤖 {t('skills.ai')}
+                        <h3 className='text-sm font-semibold text-cyan-400 mb-4 flex items-center gap-1.5'>
+                            <Bot className='h-4 w-4' /> {t('skills.ai')}
                         </h3>
                         <div className='flex flex-wrap gap-2'>
                             {SKILLS.ai.map((s) => (
@@ -227,8 +227,8 @@ export default async function AboutPage({ params }: Props) {
 
                     {/* Savoir-faire */}
                     <div className='rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm'>
-                        <h3 className='text-sm font-semibold text-muted-foreground mb-4'>
-                            🤝 {t('skills.softSkills')}
+                        <h3 className='text-sm font-semibold text-muted-foreground mb-4 flex items-center gap-1.5'>
+                            <Users className='h-4 w-4' /> {t('skills.softSkills')}
                         </h3>
                         <div className='flex flex-wrap gap-2'>
                             {SKILLS.softSkills.map((s) => (

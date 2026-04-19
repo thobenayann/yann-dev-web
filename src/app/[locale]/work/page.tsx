@@ -43,7 +43,7 @@ export default async function WorkPage({ params }: Props) {
     return (
         <main className='container mx-auto px-6 md:px-10 pt-24 pb-16 space-y-12'>
             <header className='space-y-4 max-w-2xl'>
-                <h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
+                <h1 className='text-5xl md:text-7xl font-bold tracking-tight leading-none'>
                     {t('hero.title')}
                 </h1>
                 <p className='text-lg text-muted-foreground'>

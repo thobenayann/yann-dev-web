@@ -10,7 +10,14 @@ import {
 import { useExperienceCounter } from '@/hooks/use-experience-counter';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { Bot, Code2, Rocket } from 'lucide-react';
 import { useLocale } from 'next-intl';
+
+const TRACK_ICONS: Record<string, React.ElementType> = {
+    cda: Code2,
+    'ai-curious': Bot,
+    'ai-expert': Rocket,
+};
 
 // ─── Couleurs par phase ───────────────────────────────────────────────────────
 
@@ -97,7 +104,7 @@ function MilestoneCard({
     return (
         <motion.div
             className={cn(
-                'flex-1 rounded-xl border p-4',
+                'flex-1 rounded-xl border p-5 md:p-6',
                 'bg-white/5 backdrop-blur-sm',
                 'border-white/10',
                 'hover:bg-white/10 transition-colors duration-200',
@@ -120,11 +127,11 @@ function MilestoneCard({
             >
                 {formatDate(milestone.date, locale)}
             </p>
-            <h3 className='text-sm font-semibold text-foreground mb-1 leading-snug'>
-                {milestone.size === 'large' && <span className='mr-1'>🚀</span>}
+            <h3 className='text-base font-semibold text-foreground mb-1.5 leading-snug flex items-center gap-1.5'>
+                {milestone.size === 'large' && <Rocket className='h-4 w-4 text-cyan-400 flex-shrink-0' />}
                 {label}
             </h3>
-            <p className='text-xs text-muted-foreground leading-relaxed'>
+            <p className='text-sm text-muted-foreground leading-relaxed'>
                 {description}
             </p>
         </motion.div>
@@ -161,7 +168,7 @@ function ExperienceBadge({
                     : 'border-cyan-400/30'
             )}
         >
-            <span className='text-lg'>{track.emoji}</span>
+            {(() => { const Icon = TRACK_ICONS[track.id] ?? Rocket; return <Icon className={cn('h-5 w-5 flex-shrink-0', track.color === 'purple' ? 'text-purple-400' : 'text-cyan-400')} />; })()}
             <div>
                 <p
                     className={cn(
@@ -185,7 +192,7 @@ export function CareerTimeline() {
     const locale = useLocale();
 
     return (
-        <div className='relative w-full max-w-2xl mx-auto'>
+        <div className='relative w-full'>
             {/* Ligne de fond */}
             <div className='absolute left-[7px] top-0 bottom-0 w-px bg-white/10' />
 
