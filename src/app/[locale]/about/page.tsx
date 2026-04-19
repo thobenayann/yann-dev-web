@@ -8,7 +8,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Github, Linkedin, Code2, Bot, Users } from 'lucide-react';
-import { SecondaryTitle } from '@/components/ui/secondary-title';
+import { TypingText, TypingTextCursor } from '@/components/ui/typing-text';
+import { SpotlightCard } from '@/components/ui/spotlight-card';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -190,16 +191,24 @@ export default async function AboutPage({ params }: Props) {
 
             {/* ── 2. CAREER TIMELINE ───────────────────────────────── */}
             <section>
-                <SecondaryTitle text={t('timeline.title')} showCursor={false} />
+                <h2 className='text-2xl md:text-3xl font-bold mb-10'>
+                    <TypingText text={t('timeline.title')} duration={55}>
+                        <TypingTextCursor />
+                    </TypingText>
+                </h2>
                 <CareerTimeline />
             </section>
 
             {/* ── 3. COMPÉTENCES ───────────────────────────────────── */}
             <section>
-                <SecondaryTitle text={t('skills.title')} showCursor={false} />
+                <h2 className='text-2xl md:text-3xl font-bold mb-8'>
+                    <TypingText text={t('skills.title')} duration={55} delay={100}>
+                        <TypingTextCursor />
+                    </TypingText>
+                </h2>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                     {/* Dev Stack */}
-                    <div className='group relative rounded-2xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 via-purple-500/5 to-transparent p-6 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.541_0.281_293/0.3)]'>
+                    <SpotlightCard spotlightColor='rgba(168,85,247,0.15)' className='group relative rounded-2xl border border-purple-500/20 bg-gradient-to-b from-purple-500/10 via-purple-500/5 to-transparent p-6 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.541_0.281_293/0.3)]'>
                         <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                         <div className='relative flex items-center gap-3 mb-6'>
                             <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/15 border border-purple-500/30 group-hover:bg-purple-500/25 group-hover:shadow-[0_0_20px_oklch(0.541_0.281_293/0.4)] transition-all duration-300'>
@@ -214,10 +223,10 @@ export default async function AboutPage({ params }: Props) {
                                 <PillTag key={s} label={s} color='purple' />
                             ))}
                         </div>
-                    </div>
+                    </SpotlightCard>
 
                     {/* IA & Outils */}
-                    <div className='group relative rounded-2xl border border-cyan-400/20 bg-gradient-to-b from-cyan-400/10 via-cyan-400/5 to-transparent p-6 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.75_0.18_210/0.3)]'>
+                    <SpotlightCard spotlightColor='rgba(34,211,238,0.12)' className='group relative rounded-2xl border border-cyan-400/20 bg-gradient-to-b from-cyan-400/10 via-cyan-400/5 to-transparent p-6 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_oklch(0.75_0.18_210/0.3)]'>
                         <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-cyan-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                         <div className='relative flex items-center gap-3 mb-6'>
                             <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/15 border border-cyan-400/30 group-hover:bg-cyan-400/25 group-hover:shadow-[0_0_20px_oklch(0.75_0.18_210/0.4)] transition-all duration-300'>
@@ -232,10 +241,10 @@ export default async function AboutPage({ params }: Props) {
                                 <PillTag key={s} label={s} color='cyan' />
                             ))}
                         </div>
-                    </div>
+                    </SpotlightCard>
 
                     {/* Savoir-faire */}
-                    <div className='group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 via-white/4 to-transparent p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_rgba(255,255,255,0.08)]'>
+                    <SpotlightCard spotlightColor='rgba(255,255,255,0.07)' className='group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/8 via-white/4 to-transparent p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-8px_rgba(255,255,255,0.08)]'>
                         <div className='absolute inset-0 rounded-2xl bg-gradient-to-b from-white/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
                         <div className='relative flex items-center gap-3 mb-6'>
                             <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-white/8 border border-white/15 group-hover:bg-white/15 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300'>
@@ -250,7 +259,7 @@ export default async function AboutPage({ params }: Props) {
                                 <PillTag key={s} label={s} color='neutral' />
                             ))}
                         </div>
-                    </div>
+                    </SpotlightCard>
                 </div>
             </section>
 

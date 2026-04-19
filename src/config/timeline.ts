@@ -55,8 +55,8 @@ export const MILESTONES: TimelineMilestone[] = [
     {
         id: 'alternance-ipanova',
         date: new Date(2021, 9, 1), // Octobre 2021
-        labelFr: 'Alternance CDA Bac+3 — Ipanova',
-        labelEn: 'CDA Apprenticeship Bac+3 — Ipanova',
+        labelFr: 'Alternance CDA Bac+3, Ipanova',
+        labelEn: 'CDA Apprenticeship Bac+3, Ipanova',
         descriptionFr:
             "Intégration d'Ipanova en alternance pour le titre Concepteur Développeur d'Applications.",
         descriptionEn:
@@ -79,8 +79,8 @@ export const MILESTONES: TimelineMilestone[] = [
     {
         id: 'diplome-cda',
         date: new Date(2023, 0, 1), // Janvier 2023
-        labelFr: 'Diplôme CDA — Bac+3',
-        labelEn: 'CDA Degree — Bac+3',
+        labelFr: 'Diplôme CDA Bac+3',
+        labelEn: 'CDA Degree Bac+3',
         descriptionFr:
             "Obtention du titre professionnel Concepteur Développeur d'Applications niveau 6.",
         descriptionEn:
@@ -91,8 +91,8 @@ export const MILESTONES: TimelineMilestone[] = [
     {
         id: 'senior-ipanova',
         date: new Date(2023, 9, 1), // Octobre 2023
-        labelFr: 'Fullstack senior — Ipanova',
-        labelEn: 'Senior Fullstack Developer — Ipanova',
+        labelFr: 'Fullstack senior, Ipanova',
+        labelEn: 'Senior Fullstack Developer, Ipanova',
         descriptionFr:
             'Poste fullstack senior : React, NestJS, Angular, PHP/Symfony. Support, avant-vente et formation des équipes.',
         descriptionEn:
@@ -115,8 +115,8 @@ export const MILESTONES: TimelineMilestone[] = [
     {
         id: 'airbus-mission',
         date: new Date(2025, 6, 1), // Juillet 2025
-        labelFr: 'Mission Airbus — Expert IA officiel',
-        labelEn: 'Airbus Mission — Official AI Expert',
+        labelFr: 'Prise de mission : création du pôle expertise IA Ipanova',
+        labelEn: 'New mission: building Ipanova AI expertise practice',
         descriptionFr:
             "Transformation ARP USA chez Airbus : Gemini Workspace, prompt engineering, GEMs SAP/supply chain, formation de centaines d'utilisateurs, applications de visualisation de données critiques.",
         descriptionEn:
@@ -138,16 +138,16 @@ export const EXPERIENCE_TRACKS: ExperienceTrack[] = [
     {
         id: 'ai-curious',
         startDate: new Date(2022, 11, 1), // Décembre 2022
-        labelFr: 'Curiosité & pratique IA',
-        labelEn: 'AI curiosity & practice',
+        labelFr: 'Veille & intégration IA',
+        labelEn: 'AI Integration & Research',
         color: 'cyan',
         emoji: '🤖',
     },
     {
         id: 'ai-expert',
         startDate: new Date(2025, 6, 1), // Juillet 2025
-        labelFr: 'Expert IA — mission Airbus',
-        labelEn: 'AI Expert — Airbus mission',
+        labelFr: 'Pôle expertise IA Ipanova',
+        labelEn: 'Ipanova AI Expertise Lead',
         color: 'cyan',
         emoji: '🚀',
     },

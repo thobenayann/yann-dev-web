@@ -1,23 +1,16 @@
 'use client';
 
 import {
-    EXPERIENCE_TRACKS,
     MILESTONES,
-    type ExperienceTrack,
     type TimelineMilestone,
     type TimelinePhase,
 } from '@/config/timeline';
-import { useExperienceCounter } from '@/hooks/use-experience-counter';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { Bot, Code2, Rocket } from 'lucide-react';
+import { Rocket } from 'lucide-react';
 import { useLocale } from 'next-intl';
-
-const TRACK_ICONS: Record<string, React.ElementType> = {
-    cda: Code2,
-    'ai-curious': Bot,
-    'ai-expert': Rocket,
-};
+import { HorizontalExpTimeline } from './horizontal-exp-timeline';
+import { SpotlightCard } from './spotlight-card';
 
 // ─── Couleurs par phase ───────────────────────────────────────────────────────
 
@@ -101,15 +94,16 @@ function MilestoneCard({
     const description =
         locale === 'fr' ? milestone.descriptionFr : milestone.descriptionEn;
 
+    const spotColor =
+        milestone.size === 'large'
+            ? 'rgba(34, 211, 238, 0.12)'
+            : milestone.phase === 'cda' || milestone.phase === 'cda-transition'
+            ? 'rgba(168, 85, 247, 0.10)'
+            : 'rgba(34, 211, 238, 0.08)';
+
     return (
         <motion.div
-            className={cn(
-                'flex-1 rounded-xl border p-5 md:p-6',
-                'bg-white/5 backdrop-blur-sm',
-                'border-white/10',
-                'hover:bg-white/10 transition-colors duration-200',
-                milestone.size === 'large' && 'border-cyan-400/30 bg-cyan-950/20'
-            )}
+            className='flex-1'
             initial={{ x: 24, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, margin: '-40px' }}
@@ -119,70 +113,33 @@ function MilestoneCard({
                 ease: [0.25, 0.46, 0.45, 0.94],
             }}
         >
-            <p
+            <SpotlightCard
+                spotlightColor={spotColor}
                 className={cn(
-                    'text-sm font-semibold uppercase tracking-wider mb-1',
-                    DATE_COLOR[milestone.phase]
+                    'h-full rounded-xl border p-5 md:p-6',
+                    'bg-white/5 backdrop-blur-sm',
+                    'border-white/10',
+                    'hover:bg-white/10 transition-colors duration-200',
+                    milestone.size === 'large' && 'border-cyan-400/30 bg-cyan-950/20'
                 )}
             >
-                {formatDate(milestone.date, locale)}
-            </p>
-            <h3 className='text-base font-semibold text-foreground mb-1.5 leading-snug flex items-center gap-1.5'>
-                {milestone.size === 'large' && <Rocket className='h-4 w-4 text-cyan-400 flex-shrink-0' />}
-                {label}
-            </h3>
-            <p className='text-sm text-muted-foreground leading-relaxed'>
-                {description}
-            </p>
-        </motion.div>
-    );
-}
-
-// ─── ExperienceBadge ──────────────────────────────────────────────────────────
-
-function ExperienceBadge({
-    track,
-    locale,
-}: {
-    track: ExperienceTrack;
-    locale: string;
-}) {
-    const { years, months } = useExperienceCounter(track.startDate);
-    const label = locale === 'fr' ? track.labelFr : track.labelEn;
-    const yearsLabel = locale === 'fr' ? 'an' : 'yr';
-    const yearsLabelPlural = locale === 'fr' ? 'ans' : 'yrs';
-    const monthsLabel = locale === 'fr' ? 'mois' : 'mo';
-
-    const durationStr =
-        years > 0
-            ? `${years} ${years > 1 ? yearsLabelPlural : yearsLabel}${months > 0 ? ` ${months} ${monthsLabel}` : ''}`
-            : `${months} ${monthsLabel}`;
-
-    return (
-        <div
-            className={cn(
-                'flex items-center gap-3 rounded-xl border px-4 py-3',
-                'bg-white/5 backdrop-blur-sm',
-                track.color === 'purple'
-                    ? 'border-purple-500/30'
-                    : 'border-cyan-400/30'
-            )}
-        >
-            {(() => { const Icon = TRACK_ICONS[track.id] ?? Rocket; return <Icon className={cn('h-5 w-5 flex-shrink-0', track.color === 'purple' ? 'text-purple-400' : 'text-cyan-400')} />; })()}
-            <div>
                 <p
                     className={cn(
-                        'text-lg font-bold tabular-nums',
-                        track.color === 'purple'
-                            ? 'text-purple-400'
-                            : 'text-cyan-400'
+                        'text-sm font-semibold uppercase tracking-wider mb-1',
+                        DATE_COLOR[milestone.phase]
                     )}
                 >
-                    {durationStr}
+                    {formatDate(milestone.date, locale)}
                 </p>
-                <p className='text-sm text-muted-foreground'>{label}</p>
-            </div>
-        </div>
+                <h3 className='text-base font-semibold text-foreground mb-1.5 leading-snug flex items-center gap-1.5'>
+                    {milestone.size === 'large' && <Rocket className='h-4 w-4 text-cyan-400 flex-shrink-0' />}
+                    {label}
+                </h3>
+                <p className='text-sm text-muted-foreground leading-relaxed'>
+                    {description}
+                </p>
+            </SpotlightCard>
+        </motion.div>
     );
 }
 
@@ -228,18 +185,8 @@ export function CareerTimeline() {
                 ))}
             </div>
 
-            {/* Badges live */}
-            <motion.div
-                className='mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3'
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-            >
-                {EXPERIENCE_TRACKS.map((track) => (
-                    <ExperienceBadge key={track.id} track={track} locale={locale} />
-                ))}
-            </motion.div>
+            {/* Horizontal neon expertise timeline */}
+            <HorizontalExpTimeline />
         </div>
     );
 }

@@ -22,7 +22,8 @@
       "Bash(pnpm add *)",
       "Bash(pnpm tsc *)",
       "mcp__plugin_context-mode_context-mode__ctx_execute",
-      "Bash(echo \"EXIT=$?\")"
+      "Bash(echo \"EXIT=$?\")",
+      "mcp__magic__21st_magic_component_builder"
     ]
   }
 }
