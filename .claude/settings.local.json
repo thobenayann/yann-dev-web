@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "mcp__plugin_context-mode_context-mode__ctx_search",
+      "mcp__plugin_context-mode_context-mode__ctx_execute_file",
+      "mcp__magic__21st_magic_component_inspiration",
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "Bash(pnpm install *)",
+      "Bash(pnpm build *)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(del \"D:\\\\Work\\\\Portfolio\\\\yann-dev-web\\\\src\\\\middleware.ts\")",
+      "Bash(pnpm lint *)",
+      "Bash(node -e \"const c = require\\('./node_modules/eslint-config-next/index.js'\\); console.log\\(Object.keys\\(c\\)\\)\")",
+      "WebSearch",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(node -e \"const m=require\\('./messages/fr.json'\\); console.log\\('Nav.home:',m.Navigation?.home\\); console.log\\('Work.title:',m.Work?.title\\); console.log\\('Work.backToProjects:',m.Work?.backToProjects\\); console.log\\('Work.projectDetails:',JSON.stringify\\(m.Work?.projectDetails\\)\\)\")",
+      "Bash(node -e \"const fr=require\\('./messages/fr.json'\\); const en=require\\('./messages/en.json'\\); console.log\\('FR Work:',JSON.stringify\\(fr.Work,null,2\\).slice\\(0,400\\)\\); console.log\\('EN Work:',JSON.stringify\\(en.Work,null,2\\).slice\\(0,400\\)\\)\")",
+      "Bash(git -C D:/Work/Portfolio/yann-dev-web branch --show-current)",
+      "Bash(git -C D:/Work/Portfolio/yann-dev-web status --short)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm tsc *)",
+      "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "Bash(echo \"EXIT=$?\")"
+    ]
+  }
+}

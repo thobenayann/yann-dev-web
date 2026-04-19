@@ -1,5 +1,6 @@
 // Client-safe types and tag helpers for blog posts.
 // No filesystem imports — can be used from client components.
+import GithubSlugger from 'github-slugger';
 
 export type PostMetadata = {
     title: string;
@@ -13,8 +14,8 @@ export type PostMetadata = {
 export type Post = {
     metadata: PostMetadata;
     slug: string;
-    content: string; // source MDX brute pour MDXRemote/rsc
-    readingTime: string; // ex: "5 min"
+    content: string;
+    readingTime: string;
 };
 
 export type Heading = {
@@ -91,24 +92,18 @@ export function getTagConfig(tag: string): TagConfig {
     return TAG_CONFIGS[tag] ?? DEFAULT_TAG_CONFIG;
 }
 
-// ── Pure helper: slugify (safe for client) ─────────────────────────
-
-function slugify(text: string): string {
-    return text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
-}
+// ── extractHeadings — uses github-slugger to match rehype-slug exactly ───────
+// rehype-slug uses GithubSlugger internally; we must use the same library so
+// that TOC anchor IDs (#id) resolve to the real heading elements in the DOM.
 
 export function extractHeadings(content: string): Heading[] {
+    const slugger = new GithubSlugger();
     const lines = content.split('\n');
     return lines
         .filter((l) => /^#{2,3}\s+/.test(l))
         .map((l) => {
             const level = l.startsWith('### ') ? 3 : 2;
             const text = l.replace(/^#{2,3}\s+/, '').trim();
-            return { id: slugify(text), text, level };
+            return { id: slugger.slug(text), text, level };
         });
 }

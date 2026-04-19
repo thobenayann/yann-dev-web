@@ -71,8 +71,9 @@ export function Toc({ headings }: Props) {
                         <button
                             onClick={() => scrollToHeading(h.id)}
                             className={cn(
-                                'w-full text-left text-sm py-1.5 transition-all duration-150 leading-snug border-l-2 pl-3',
-                                h.level === 3 && 'pl-5 text-xs',
+                                'w-full text-left py-1.5 transition-all duration-150 leading-snug border-l-2 cursor-pointer',
+                                h.level === 2 && 'pl-3 text-sm',
+                                h.level === 3 && 'pl-5 text-xs opacity-80',
                                 activeId === h.id
                                     ? 'text-foreground font-medium border-white/60'
                                     : 'text-muted-foreground hover:text-foreground/80 border-white/10 hover:border-white/25'

@@ -14,7 +14,7 @@ export function ArticleCardFeatured({ post, locale, readLabel }: Props) {
 
     const date = new Date(metadata.publishedAt).toLocaleDateString(
         locale === 'fr' ? 'fr-FR' : 'en-US',
-        { year: 'numeric', month: 'short', day: 'numeric' }
+        { year: 'numeric', month: 'long', day: 'numeric' }
     );
 
     return (
@@ -24,62 +24,55 @@ export function ArticleCardFeatured({ post, locale, readLabel }: Props) {
         >
             <Link
                 href={`/${locale}/blog/${slug}`}
-                className={`group block rounded-2xl border bg-white/5 backdrop-blur-sm overflow-hidden hover:bg-white/8 transition-all duration-300 ${tag.border}`}
+                className={`group block rounded-2xl border bg-white/5 overflow-hidden hover:bg-white/8 transition-all duration-300 cursor-pointer ${tag.border}`}
             >
                 <div className='flex flex-col md:flex-row'>
-                    {/* Image / gradient — compact, left side on desktop */}
-                    <div className='relative md:w-2/5 aspect-[16/9] md:aspect-auto md:min-h-[280px] overflow-hidden flex-shrink-0'>
+                    {/* Image / gradient */}
+                    <div className='relative md:w-3/5 aspect-[16/9] md:aspect-auto md:min-h-[320px] overflow-hidden flex-shrink-0'>
                         {metadata.image ? (
                             <Image
                                 src={metadata.image}
                                 alt={metadata.title}
                                 fill
-                                className='object-cover transition-transform duration-500 group-hover:scale-105'
+                                className='object-cover transition-transform duration-700 group-hover:scale-105'
                                 priority
                             />
                         ) : (
-                            <div
-                                className={`w-full h-full bg-gradient-to-br ${tag.gradient} opacity-70`}
-                            />
+                            <div className={`w-full h-full bg-gradient-to-br ${tag.gradient} opacity-60`} />
                         )}
-                        {/* Gradient overlay for readability on mobile */}
-                        <div className='md:hidden absolute inset-0 bg-gradient-to-t from-black/50 to-transparent' />
-                        {/* Left color accent line on desktop */}
-                        <div
-                            className={`hidden md:block absolute left-0 inset-y-0 w-0.5 bg-gradient-to-b ${tag.gradient}`}
-                        />
+                        {/* Dark overlay on hover for contrast */}
+                        <div className='absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300' />
+                        {/* Left color line — desktop */}
+                        <div className={`hidden md:block absolute right-0 inset-y-0 w-px bg-gradient-to-b ${tag.gradient} opacity-50`} />
                     </div>
 
-                    {/* Content — always visible */}
-                    <div className='flex-1 p-6 md:p-8 flex flex-col justify-between gap-5'>
-                        <div className='space-y-3'>
-                            {/* Meta */}
+                    {/* Content */}
+                    <div className='flex-1 p-7 md:p-10 flex flex-col justify-between gap-6'>
+                        <div className='space-y-4'>
                             <div className='flex items-center gap-2 flex-wrap'>
-                                <span
-                                    className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${tag.badge}`}
-                                >
+                                <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${tag.badge}`}>
                                     {metadata.tag}
                                 </span>
-                                <span className='text-xs text-muted-foreground'>
+                                <span className='text-sm text-muted-foreground'>
                                     {readingTime} · {date}
                                 </span>
                             </div>
 
-                            {/* Title */}
-                            <h2 className='text-xl md:text-2xl font-bold tracking-tight leading-snug group-hover:text-white transition-colors'>
-                                {metadata.title}
+                            {/* Title with animated underline */}
+                            <h2 className='text-2xl md:text-3xl font-bold tracking-tight leading-snug'>
+                                <span className='bg-gradient-to-r from-foreground to-foreground bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_2px] pb-0.5'>
+                                    {metadata.title}
+                                </span>
                             </h2>
 
-                            {/* Description — always visible */}
-                            <p className='text-sm text-muted-foreground leading-relaxed line-clamp-3'>
+                            <p className='text-base text-muted-foreground leading-relaxed'>
                                 {metadata.summary}
                             </p>
                         </div>
 
-                        {/* CTA */}
-                        <div className='flex items-center gap-2 text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors'>
+                        <div className='flex items-center gap-2 text-sm font-medium text-foreground/60 group-hover:text-foreground transition-colors duration-200'>
                             <span>{readLabel}</span>
-                            <ArrowRight className='h-4 w-4 transition-transform group-hover:translate-x-1' />
+                            <ArrowRight className='h-4 w-4 transition-transform duration-200 group-hover:translate-x-1' />
                         </div>
                     </div>
                 </div>

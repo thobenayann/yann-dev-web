@@ -45,7 +45,7 @@ export function BlogFilters({
             <div className='flex gap-2 flex-wrap'>
                 <button
                     onClick={() => setActiveTag(null)}
-                    className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
+                    className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer ${
                         activeTag === null
                             ? 'text-foreground'
                             : 'text-muted-foreground hover:text-foreground'
@@ -71,7 +71,7 @@ export function BlogFilters({
                         onClick={() =>
                             setActiveTag(activeTag === tag ? null : tag)
                         }
-                        className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
+                        className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer ${
                             activeTag === tag
                                 ? 'text-foreground'
                                 : 'text-muted-foreground hover:text-foreground'
@@ -94,26 +94,35 @@ export function BlogFilters({
             </div>
 
             {/* Featured article */}
-            <AnimatePresence mode='wait'>
-                {featured && (
-                    <motion.div
-                        key={featured.slug}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.25 }}
-                    >
-                        <ArticleCardFeatured
-                            post={featured}
-                            locale={locale}
-                            readLabel={readLabel}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {featured && (
+                <div>
+                    <p className='text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/50 mb-4'>
+                        {locale === 'fr' ? 'À la une' : 'Featured'}
+                    </p>
+                    <AnimatePresence mode='wait'>
+                        <motion.div
+                            key={featured.slug}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <ArticleCardFeatured
+                                post={featured}
+                                locale={locale}
+                                readLabel={readLabel}
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+            )}
 
             {/* Compact grid */}
             {rest.length > 0 && (
+                <div>
+                    <p className='text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/50 mb-4'>
+                        {locale === 'fr' ? 'Tous les articles' : 'All articles'}
+                    </p>
                 <motion.div
                     variants={container}
                     initial='hidden'
@@ -128,6 +137,7 @@ export function BlogFilters({
                         ))}
                     </AnimatePresence>
                 </motion.div>
+                </div>
             )}
 
             {filtered.length === 0 && (

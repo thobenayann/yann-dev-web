@@ -45,17 +45,14 @@ export default async function BlogPage({ params }: Props) {
     const tags = [...new Set(posts.map((p) => p.metadata.tag))];
 
     return (
-        <main className='container mx-auto px-6 md:px-10 py-16 space-y-8'>
+        <main className='container mx-auto px-6 md:px-10 pt-24 pb-20 space-y-12'>
             {/* Hero header */}
-            <header className='space-y-3 max-w-2xl'>
-                <h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
+            <header className='space-y-4 max-w-3xl'>
+                <h1 className='text-5xl md:text-7xl font-bold tracking-tight leading-none'>
                     {t('hero.title')}
                 </h1>
-                <p className='text-lg text-muted-foreground'>
+                <p className='text-lg md:text-xl text-muted-foreground'>
                     {t('hero.subtitle')}
-                </p>
-                <p className='text-sm text-muted-foreground'>
-                    {t('hero.count', { count: posts.length })}
                 </p>
             </header>
 

@@ -41,7 +41,7 @@ export default async function WorkPage({ params }: Props) {
     const projects = await getProjects(locale);
 
     return (
-        <main className='container mx-auto px-6 md:px-10 py-16 space-y-12'>
+        <main className='container mx-auto px-6 md:px-10 pt-24 pb-16 space-y-12'>
             <header className='space-y-4 max-w-2xl'>
                 <h1 className='text-4xl md:text-5xl font-bold tracking-tight'>
                     {t('hero.title')}

@@ -134,7 +134,7 @@
         "readMore": "Read →",
         "hero": {
             "title": "Articles",
-            "subtitle": "Experience reports, techniques and real-world cases — 1 article per month.",
+            "subtitle": "Experience reports, techniques and real-world cases.",
             "count": "{count, plural, =1 {# article} other {# articles}}"
         },
         "filters": {

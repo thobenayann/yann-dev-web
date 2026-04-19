@@ -134,7 +134,7 @@
         "readMore": "Lire →",
         "hero": {
             "title": "Mes articles",
-            "subtitle": "Retours d'expérience, techniques et cas pratiques — 1 article par mois.",
+            "subtitle": "Retours d'expérience, techniques et cas pratiques.",
             "count": "{count, plural, =1 {# article} other {# articles}}"
         },
         "filters": {

@@ -17,38 +17,37 @@ export function ArticleCard({ post, locale }: Props) {
 
     return (
         <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            whileHover={{ y: -3 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+            className='h-full'
         >
             <Link
                 href={`/${locale}/blog/${slug}`}
-                className={`block rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-white/20 transition-colors h-full`}
+                className={`group block rounded-xl border bg-white/5 backdrop-blur-sm overflow-hidden hover:bg-white/8 transition-all duration-300 h-full cursor-pointer ${tag.border}`}
             >
-                {/* Bande colorée tag */}
-                <div
-                    className={`h-[4px] w-full bg-gradient-to-r ${tag.gradient}`}
-                />
+                {/* Top gradient bar */}
+                <div className={`h-[3px] w-full bg-gradient-to-r ${tag.gradient}`} />
+
                 <div className='p-5 space-y-3'>
                     {/* Meta */}
                     <div className='flex items-center gap-2 flex-wrap'>
-                        <span
-                            className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${tag.badge}`}
-                        >
+                        <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${tag.badge}`}>
                             {metadata.tag}
                         </span>
                         <span className='text-xs text-muted-foreground'>
-                            {readingTime}
-                        </span>
-                        <span className='text-xs text-muted-foreground'>
-                            · {date}
+                            {readingTime} · {date}
                         </span>
                     </div>
-                    {/* Titre */}
-                    <h3 className='font-semibold text-foreground leading-snug'>
-                        {metadata.title}
+
+                    {/* Title with animated underline */}
+                    <h3 className='text-base md:text-lg font-semibold leading-snug'>
+                        <span className='bg-gradient-to-r from-foreground to-foreground bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 group-hover:bg-[length:100%_1px] pb-0.5'>
+                            {metadata.title}
+                        </span>
                     </h3>
+
                     {/* Excerpt */}
-                    <p className='text-sm text-muted-foreground line-clamp-2 leading-relaxed'>
+                    <p className='text-sm text-muted-foreground line-clamp-3 leading-relaxed'>
                         {metadata.summary}
                     </p>
                 </div>

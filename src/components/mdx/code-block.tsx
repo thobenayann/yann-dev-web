@@ -56,7 +56,7 @@ export function CodeBlockWrapper({
             <pre
                 ref={preRef}
                 {...props}
-                className='overflow-x-auto p-4 text-sm leading-relaxed bg-[#0d1117] m-0 rounded-none'
+                className='overflow-x-auto p-4 text-[15px] leading-relaxed bg-[#0d1117] m-0 rounded-none'
             >
                 {children}
             </pre>
