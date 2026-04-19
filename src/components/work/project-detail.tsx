@@ -1,16 +1,34 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Carousel } from '@/components/ui/carousel';
 import { Project } from '@/types/mdx';
+import { evaluate } from '@mdx-js/mdx';
+import * as jsxDevRuntime from 'react/jsx-dev-runtime';
+import * as jsxRuntime from 'react/jsx-runtime';
 import { ArrowLeft, ExternalLink, Lock } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 
 type Props = { project: Project; locale: string };
 
+const isDev = process.env.NODE_ENV === 'development';
+
 export async function ProjectDetail({ project, locale }: Props) {
     const { metadata } = project;
     const t = await getTranslations({ locale, namespace: 'Work' });
+
+    const runtime = isDev
+        ? { ...jsxRuntime, ...jsxDevRuntime }
+        : jsxRuntime;
+
+    type MDXComponent = React.ComponentType<{ components?: Record<string, unknown> }>;
+    let MDXContent: MDXComponent | null = null;
+    if (project.content.trim().length > 0) {
+        const evaluated = await evaluate(project.content, {
+            ...(runtime as unknown as Parameters<typeof evaluate>[1]),
+            development: isDev,
+        });
+        MDXContent = evaluated.default as unknown as MDXComponent;
+    }
 
     return (
         <article className='container mx-auto px-6 md:px-10 py-16 max-w-4xl space-y-10'>
@@ -118,9 +136,9 @@ export async function ProjectDetail({ project, locale }: Props) {
                 </div>
             )}
 
-            {project.content.trim().length > 0 && (
+            {MDXContent && (
                 <div className='prose prose-invert max-w-none prose-headings:tracking-tight prose-p:text-muted-foreground prose-a:text-primary'>
-                    <MDXRemote source={project.content} />
+                    <MDXContent />
                 </div>
             )}
         </article>

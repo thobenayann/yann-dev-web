@@ -16,11 +16,11 @@ type Props = {
 
 const container = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.08 } },
+    show: { transition: { staggerChildren: 0.07 } },
 };
 const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    hidden: { opacity: 0, y: 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.25 } },
 };
 
 export function BlogFilters({
@@ -40,12 +40,12 @@ export function BlogFilters({
     const rest = filtered.slice(1);
 
     return (
-        <div className='space-y-10'>
-            {/* Chips filtres sticky */}
-            <div className='sticky top-16 z-30 -mx-6 px-6 py-3 bg-background/80 backdrop-blur-sm border-b border-white/5 flex gap-2 overflow-x-auto scrollbar-none'>
+        <div className='space-y-8'>
+            {/* Filter pills — clean row, no black bar */}
+            <div className='flex gap-2 flex-wrap'>
                 <button
                     onClick={() => setActiveTag(null)}
-                    className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                    className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
                         activeTag === null
                             ? 'text-foreground'
                             : 'text-muted-foreground hover:text-foreground'
@@ -54,19 +54,24 @@ export function BlogFilters({
                     {activeTag === null && (
                         <motion.span
                             layoutId='filter-pill'
-                            className='absolute inset-0 rounded-full bg-white/10'
-                            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                            className='absolute inset-0 rounded-full bg-white/12 border border-white/20'
+                            transition={{
+                                type: 'spring',
+                                stiffness: 400,
+                                damping: 30,
+                            }}
                         />
                     )}
                     <span className='relative'>{allLabel}</span>
                 </button>
+
                 {tags.map((tag) => (
                     <button
                         key={tag}
                         onClick={() =>
                             setActiveTag(activeTag === tag ? null : tag)
                         }
-                        className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                        className={`relative flex-shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
                             activeTag === tag
                                 ? 'text-foreground'
                                 : 'text-muted-foreground hover:text-foreground'
@@ -75,7 +80,7 @@ export function BlogFilters({
                         {activeTag === tag && (
                             <motion.span
                                 layoutId='filter-pill'
-                                className='absolute inset-0 rounded-full bg-white/10'
+                                className='absolute inset-0 rounded-full bg-white/12 border border-white/20'
                                 transition={{
                                     type: 'spring',
                                     stiffness: 400,
@@ -88,15 +93,15 @@ export function BlogFilters({
                 ))}
             </div>
 
-            {/* Featured */}
+            {/* Featured article */}
             <AnimatePresence mode='wait'>
                 {featured && (
                     <motion.div
                         key={featured.slug}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.25 }}
                     >
                         <ArticleCardFeatured
                             post={featured}
@@ -107,21 +112,18 @@ export function BlogFilters({
                 )}
             </AnimatePresence>
 
-            {/* Grille compacte */}
+            {/* Compact grid */}
             {rest.length > 0 && (
                 <motion.div
                     variants={container}
                     initial='hidden'
                     animate='show'
-                    className='grid grid-cols-1 sm:grid-cols-2 gap-4'
+                    className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'
                 >
                     <AnimatePresence>
                         {rest.map((post) => (
                             <motion.div key={post.slug} variants={item} layout>
-                                <ArticleCard
-                                    post={post}
-                                    locale={locale}
-                                />
+                                <ArticleCard post={post} locale={locale} />
                             </motion.div>
                         ))}
                     </AnimatePresence>

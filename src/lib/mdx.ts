@@ -12,8 +12,7 @@ async function getMDXFiles(dir: string): Promise<string[]> {
     try {
         const files = await fs.readdir(dir);
         return files.filter((file) => path.extname(file) === '.mdx');
-    } catch (error) {
-        console.error(`Erreur lors de la lecture du répertoire ${dir}:`, error);
+    } catch {
         return [];
     }
 }

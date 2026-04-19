@@ -185,9 +185,9 @@
     color: oklch(0.75 0.01 0);
 }
 
-/* Shiki code blocks — retirer le background inline (géré par nous) */
+/* Shiki code blocks — background géré par CodeBlockWrapper */
 .prose pre {
     background: transparent !important;
-    padding: 0 !important;
     margin: 0 !important;
+    /* padding intentionnellement non zéré — CodeBlockWrapper applique son propre padding */
 }

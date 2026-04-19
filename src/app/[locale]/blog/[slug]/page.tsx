@@ -184,7 +184,7 @@ export default async function BlogSlugPage({ params }: Props) {
 
                 {/* Cover image */}
                 {metadata.image ? (
-                    <div className='relative w-full aspect-[16/9] rounded-2xl overflow-hidden mb-10 max-w-3xl'>
+                    <div className='relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-10'>
                         <Image
                             src={metadata.image}
                             alt={metadata.title}
@@ -195,15 +195,15 @@ export default async function BlogSlugPage({ params }: Props) {
                     </div>
                 ) : (
                     <div
-                        className={`w-full max-w-3xl aspect-[16/9] rounded-2xl bg-gradient-to-br ${tag.gradient} opacity-30 mb-10`}
+                        className={`w-full h-2 rounded-full bg-gradient-to-r ${tag.gradient} opacity-60 mb-10`}
                     />
                 )}
 
                 {/* Two-column layout: article + TOC */}
-                <div className='flex gap-12 items-start'>
+                <div className='flex flex-col lg:flex-row gap-12 items-start'>
                     {/* Article body */}
-                    <article className='min-w-0 flex-1 max-w-2xl space-y-10'>
-                        <div className='prose prose-invert max-w-none'>
+                    <article className='min-w-0 flex-1 space-y-10'>
+                        <div className='prose prose-lg prose-invert max-w-none'>
                             <MDXContent components={getMDXComponents()} />
                         </div>
 
@@ -226,8 +226,8 @@ export default async function BlogSlugPage({ params }: Props) {
                         )}
                     </article>
 
-                    {/* TOC sidebar (desktop only, hidden via CSS in Toc component) */}
-                    <aside className='w-56 flex-shrink-0'>
+                    {/* TOC sidebar */}
+                    <aside className='w-64 flex-shrink-0'>
                         <Toc headings={headings} />
                     </aside>
                 </div>

@@ -14,7 +14,7 @@ export function ArticleCardFeatured({ post, locale, readLabel }: Props) {
 
     const date = new Date(metadata.publishedAt).toLocaleDateString(
         locale === 'fr' ? 'fr-FR' : 'en-US',
-        { year: 'numeric', month: 'long', day: 'numeric' }
+        { year: 'numeric', month: 'short', day: 'numeric' }
     );
 
     return (
@@ -24,58 +24,63 @@ export function ArticleCardFeatured({ post, locale, readLabel }: Props) {
         >
             <Link
                 href={`/${locale}/blog/${slug}`}
-                className='block rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-white/20 transition-colors'
+                className={`group block rounded-2xl border bg-white/5 backdrop-blur-sm overflow-hidden hover:bg-white/8 transition-all duration-300 ${tag.border}`}
             >
-                {/* Cover image ou gradient */}
-                <div className='relative w-full aspect-[16/9] overflow-hidden'>
-                    {metadata.image ? (
-                        <Image
-                            src={metadata.image}
-                            alt={metadata.title}
-                            fill
-                            className='object-cover'
-                            priority
-                        />
-                    ) : (
+                <div className='flex flex-col md:flex-row'>
+                    {/* Image / gradient — compact, left side on desktop */}
+                    <div className='relative md:w-2/5 aspect-[16/9] md:aspect-auto md:min-h-[280px] overflow-hidden flex-shrink-0'>
+                        {metadata.image ? (
+                            <Image
+                                src={metadata.image}
+                                alt={metadata.title}
+                                fill
+                                className='object-cover transition-transform duration-500 group-hover:scale-105'
+                                priority
+                            />
+                        ) : (
+                            <div
+                                className={`w-full h-full bg-gradient-to-br ${tag.gradient} opacity-70`}
+                            />
+                        )}
+                        {/* Gradient overlay for readability on mobile */}
+                        <div className='md:hidden absolute inset-0 bg-gradient-to-t from-black/50 to-transparent' />
+                        {/* Left color accent line on desktop */}
                         <div
-                            className={`w-full h-full bg-gradient-to-br ${tag.gradient} opacity-80`}
+                            className={`hidden md:block absolute left-0 inset-y-0 w-0.5 bg-gradient-to-b ${tag.gradient}`}
                         />
-                    )}
-                    {/* Overlay gradient pour lisibilité */}
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent' />
-                </div>
-
-                {/* Content */}
-                <div className='p-6 md:p-8 space-y-4'>
-                    {/* Meta */}
-                    <div className='flex items-center gap-3 flex-wrap'>
-                        <span
-                            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${tag.badge}`}
-                        >
-                            {metadata.tag}
-                        </span>
-                        <span className='text-sm text-muted-foreground'>
-                            {readingTime}
-                        </span>
-                        <span className='text-sm text-muted-foreground'>
-                            · {date}
-                        </span>
                     </div>
 
-                    {/* Titre */}
-                    <h2 className='text-2xl md:text-4xl font-bold tracking-tight leading-tight'>
-                        {metadata.title}
-                    </h2>
+                    {/* Content — always visible */}
+                    <div className='flex-1 p-6 md:p-8 flex flex-col justify-between gap-5'>
+                        <div className='space-y-3'>
+                            {/* Meta */}
+                            <div className='flex items-center gap-2 flex-wrap'>
+                                <span
+                                    className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${tag.badge}`}
+                                >
+                                    {metadata.tag}
+                                </span>
+                                <span className='text-xs text-muted-foreground'>
+                                    {readingTime} · {date}
+                                </span>
+                            </div>
 
-                    {/* Excerpt */}
-                    <p className='text-muted-foreground leading-relaxed max-w-2xl line-clamp-3'>
-                        {metadata.summary}
-                    </p>
+                            {/* Title */}
+                            <h2 className='text-xl md:text-2xl font-bold tracking-tight leading-snug group-hover:text-white transition-colors'>
+                                {metadata.title}
+                            </h2>
 
-                    {/* CTA */}
-                    <div className='flex items-center gap-2 text-sm font-medium text-foreground/80 group-hover:text-foreground'>
-                        <span>{readLabel}</span>
-                        <ArrowRight className='h-4 w-4 transition-transform group-hover:translate-x-1' />
+                            {/* Description — always visible */}
+                            <p className='text-sm text-muted-foreground leading-relaxed line-clamp-3'>
+                                {metadata.summary}
+                            </p>
+                        </div>
+
+                        {/* CTA */}
+                        <div className='flex items-center gap-2 text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors'>
+                            <span>{readLabel}</span>
+                            <ArrowRight className='h-4 w-4 transition-transform group-hover:translate-x-1' />
+                        </div>
                     </div>
                 </div>
             </Link>
