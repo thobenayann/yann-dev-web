@@ -2,7 +2,6 @@ import { Project, ProjectMetadata } from '@/types/mdx';
 import { ProjectMetadataSchema } from '@/types/mdx.schema';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
 import path from 'path';
 
 /**
@@ -46,17 +45,9 @@ async function readMDXFile(filePath: string): Promise<{
                   links: Array.isArray(data.links) ? data.links : [],
               };
 
-        // Sérialise le contenu MDX
-        const mdxSource = await serialize(content, {
-            parseFrontmatter: true,
-            mdxOptions: {
-                development: process.env.NODE_ENV === 'development',
-            },
-        });
-
         return {
             metadata,
-            content: mdxSource.compiledSource,
+            content,
         };
     } catch (error) {
         console.error(

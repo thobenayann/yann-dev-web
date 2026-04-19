@@ -3,11 +3,13 @@
 import { Sparkles } from '@/components/ui/sparkles';
 import { motion } from 'framer-motion';
 import { Home, MoveLeft } from 'lucide-react';
-import { useLocale } from 'next-intl';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function NotFound() {
-    const locale = useLocale();
+    // Derive locale from the URL path — does not depend on NextIntlClientProvider
+    const pathname = usePathname();
+    const locale = pathname?.startsWith('/en') ? 'en' : 'fr';
     const isFr = locale === 'fr';
 
     return (
@@ -43,10 +45,7 @@ export default function NotFound() {
                     404
                 </span>
                 {/* Sparkles over the number */}
-                <Sparkles
-                    count={10}
-                    className='absolute inset-0 pointer-events-none'
-                />
+                <Sparkles count={10} className='absolute inset-0 pointer-events-none' />
             </motion.div>
 
             {/* Text */}

@@ -4,6 +4,7 @@ import { routing } from '@/i18n/routing';
 import { getPosts } from '@/lib/blog';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -56,14 +57,16 @@ export default async function BlogPage({ params }: Props) {
                 </p>
             </header>
 
-            {/* Filters + articles */}
-            <BlogFilters
-                posts={posts}
-                locale={locale}
-                tags={tags}
-                allLabel={t('filters.all')}
-                readLabel={t('readMore')}
-            />
+            {/* Filters + articles — Suspense required for useSearchParams */}
+            <Suspense>
+                <BlogFilters
+                    posts={posts}
+                    locale={locale}
+                    tags={tags}
+                    allLabel={t('filters.all')}
+                    readLabel={t('readMore')}
+                />
+            </Suspense>
         </main>
     );
 }
