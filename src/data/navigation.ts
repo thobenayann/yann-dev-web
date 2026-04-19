@@ -2,7 +2,6 @@ import type { IconType } from 'react-icons';
 import { AiFillHome } from 'react-icons/ai';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaBlog } from 'react-icons/fa';
-import { IoGameController } from 'react-icons/io5';
 import { MdWork } from 'react-icons/md';
 
 export type SeparatorTab = { type: 'separator' };
@@ -34,10 +33,5 @@ export const navigationTabs: readonly NavigationTab[] = [
         title: 'Blog',
         icon: FaBlog,
         path: '/blog',
-    },
-    {
-        title: 'Hobbies',
-        icon: IoGameController,
-        path: '/hobbies',
     },
 ];

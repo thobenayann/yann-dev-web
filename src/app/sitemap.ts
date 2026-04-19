@@ -39,5 +39,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             }))
     );
 
-    return [...activeRoutes, ...blogs, ...works];
+    // Legal pages — noindex but included for completeness
+    const legalSlugs = ['mentions-legales', 'confidentialite'];
+    const legalPages = routing.locales.flatMap((locale) =>
+        legalSlugs.map((slug) => ({
+            url: `${SITE_URL}/${locale}/legal/${slug}`,
+            lastModified: now,
+            changeFrequency: 'yearly' as const,
+            priority: 0.1,
+        }))
+    );
+
+    return [...activeRoutes, ...blogs, ...works, ...legalPages];
 }

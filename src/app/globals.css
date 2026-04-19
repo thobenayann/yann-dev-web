@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -7,6 +8,12 @@
     /* Typography */
     --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
     --font-family-mono: var(--font-inter), ui-monospace, monospace;
+}
+
+@keyframes sparkle-pop {
+    0%   { transform: scale(0) rotate(0deg);   opacity: 0; }
+    50%  { transform: scale(1) rotate(90deg);  opacity: 1; }
+    100% { transform: scale(0) rotate(180deg); opacity: 0; }
 }
 
 @keyframes marquee {
@@ -24,6 +31,17 @@
     }
     to {
         transform: translateY(calc(-100% - var(--gap)));
+    }
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateY(calc(var(--radius) * 1px))
+            rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateY(calc(var(--radius) * 1px))
+            rotate(-360deg);
     }
 }
 
@@ -150,4 +168,32 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* ── Prose dark theme customisations ─────────────────────────── */
+.prose {
+    --tw-prose-body: oklch(0.85 0.01 0);
+    --tw-prose-headings: oklch(0.98 0 0);
+    --tw-prose-links: oklch(0.75 0.18 210);
+    --tw-prose-code: oklch(0.85 0.05 220);
+    --tw-prose-quotes: oklch(0.7 0.01 0);
+    --tw-prose-counters: oklch(0.7 0.01 0);
+    --tw-prose-bullets: oklch(0.5 0.01 0);
+    --tw-prose-hr: oklch(0.25 0.01 0);
+    --tw-prose-th-borders: oklch(0.3 0.01 0);
+    --tw-prose-td-borders: oklch(0.2 0.01 0);
+}
+
+.prose blockquote {
+    border-left: 3px solid oklch(0.541 0.281 293);
+    padding-left: 1rem;
+    font-style: normal;
+    color: oklch(0.75 0.01 0);
+}
+
+/* Shiki code blocks — background géré par CodeBlockWrapper */
+.prose pre {
+    background: transparent !important;
+    margin: 0 !important;
+    /* padding intentionnellement non zéré — CodeBlockWrapper applique son propre padding */
 }

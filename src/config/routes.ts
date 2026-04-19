@@ -31,7 +31,7 @@ export const routes: Routes = {
     },
     '/hobbies': {
         path: '/hobbies',
-        isEnabled: true,
+        isEnabled: false,
     },
 } as const;
 
