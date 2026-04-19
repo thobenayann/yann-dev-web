@@ -200,7 +200,7 @@ export default async function BlogSlugPage({ params }: Props) {
                 )}
 
                 {/* Two-column layout: article + TOC */}
-                <div className='flex flex-col lg:flex-row gap-12 items-start'>
+                <div className='flex flex-col lg:flex-row gap-12'>
                     {/* Article body */}
                     <article className='min-w-0 flex-1 space-y-10'>
                         <div className='prose prose-lg prose-invert max-w-none'>
