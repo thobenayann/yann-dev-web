@@ -1,4 +1,4 @@
-import { TranslatedHomeContent } from '@/components/i18n/translated-home-content';
+import { HomeContent } from '@/components/layout/home-content';
 import { getProjects } from '@/lib/mdx';
 import { setRequestLocale } from 'next-intl/server';
 
@@ -67,5 +67,5 @@ export default async function Home({
 
     const projects = await getProjects(locale);
 
-    return <TranslatedHomeContent projects={projects} locale={locale} />;
+    return <HomeContent projects={projects} locale={locale} />;
 }

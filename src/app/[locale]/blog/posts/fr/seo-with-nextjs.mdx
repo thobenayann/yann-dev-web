@@ -1,0 +1,72 @@
+---
+title: 'SEO avec Next.js : Comment optimiser vos applications web ?'
+publishedAt: '2025-03-10'
+summary: "Apprenez à améliorer le référencement de vos applications Next.js avec des techniques d'optimisation avancées."
+tag: 'SEO'
+lang: 'fr'
+---
+
+En tant que développeur web chez **Ipanova**, mon quotidien consiste à construire des applications web personnalisées et à intégrer des ERP comme SAP Business One. L'un de mes défis actuels est l'optimisation du site d'**Ipanova** pour améliorer son référencement.
+
+Même en B2B, le SEO reste essentiel. Voyons comment le faire efficacement avec Next.js.
+
+## Le SEO : incontournable pour la visibilité B2B
+
+Le SEO aide à améliorer la visibilité de votre site dans les résultats Google, sans publicité payante.
+
+> **Le meilleur endroit pour cacher un cadavre ? La page 2 des résultats Google !** 😂
+
+En B2B, les cycles d'achat sont plus longs et les enjeux financiers plus élevés. Une stratégie SEO solide rassure vos clients potentiels sur votre expertise.
+
+## Next.js : votre arme SEO
+
+### Des URLs propres avec le routage basé sur les fichiers
+
+```jsx
+// app/services/[service]/page.js
+export default function ServicePage({ params }) {
+    return <h1>Notre expertise en {params.service}</h1>;
+}
+```
+
+Ce qui génère : **votresite.com/services/integration-erp-sap**
+
+### Des métadonnées dynamiques pour un impact maximum
+
+```jsx
+export const metadata = {
+    title: 'Ipanova - Experts SAP Business One & Développement Web',
+    description: 'Applications web sur mesure et intégration SAP Business One.',
+    openGraph: {
+        title: 'Ipanova - Experts SAP Business One & Développement Web',
+        images: ['/images/og-image-ipanova.jpg'],
+    },
+};
+```
+
+### Stratégies de rendu : SSR, SSG et ISR
+
+- **SSR** pour le contenu très dynamique.
+- **SSG** pour les pages au contenu fixe.
+- **ISR** pour le contenu semi-dynamique mis à jour périodiquement.
+
+### Générer votre sitemap automatiquement
+
+Next.js supporte la génération de sitemap via la convention `app/sitemap.ts`.
+
+### Robots.txt : guidez les crawlers
+
+```txt
+User-agent: *
+Allow: /
+Disallow: /admin
+Sitemap: https://votresite.com/sitemap.xml
+```
+
+## Outils SEO indispensables
+
+- [**SERPmantics**](https://www.serpmantics.com/) — analyse sémantique de contenu
+- [**Google Search Console**](https://search.google.com/search-console) — suivi indexation et performances
+- [**Ubersuggest**](https://app.neilpatel.com/en/ubersuggest/) — recherche de mots-clés
+
+Vous souhaitez optimiser votre SEO ou construire une application Next.js ? [Contactez-moi](mailto:thobena.yann@gmail.com) — discutons de votre projet !

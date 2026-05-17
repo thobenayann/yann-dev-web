@@ -2,13 +2,14 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Yann Thobena dev',
-        short_name: 'yannthobenadev',
-        description: 'Portfolio de Yann Thobena, développeur web',
+        name: 'Yann Thobena · Développeur & Expert IA',
+        short_name: 'Yann Thobena',
+        description:
+            "Portfolio de Yann Thobena, Concepteur Développeur d'Applications & Expert IA à Toulouse",
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
+        background_color: '#0a0a0f',
+        theme_color: '#0a0a0f',
         icons: [
             {
                 src: '/web-app-manifest-192x192.png',

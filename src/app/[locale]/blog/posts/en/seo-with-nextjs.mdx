@@ -1,0 +1,74 @@
+---
+title: 'SEO with Next.js: How to Optimize Your Web Applications?'
+publishedAt: '2025-03-10'
+summary: 'Learn how to improve the SEO of your Next.js applications with advanced optimisation techniques.'
+tag: 'SEO'
+lang: 'en'
+---
+
+As a web developer at **Ipanova**, my daily work involves building custom web applications, integrating ERP systems like SAP Business One, and working on Business Intelligence solutions. One of my ongoing challenges is optimising **Ipanova's** website for better search engine ranking.
+
+Even in B2B, SEO remains essential. Let's dive into how to do it efficiently with Next.js.
+
+## SEO: A Must for B2B Visibility
+
+SEO (Search Engine Optimisation) helps improve your website's visibility in search results, making it easier for potential customers to find you — without paid ads.
+
+> **The best place to hide a dead body? Page 2 of Google search results!** 😂
+
+In B2B, buying cycles are longer, decisions involve multiple stakeholders, and financial stakes are higher. A solid SEO strategy reassures potential clients of your expertise.
+
+## Next.js: Your SEO Powerhouse
+
+### Clean URLs with File-Based Routing
+
+Next.js uses file-based routing to structure URLs effectively:
+
+```jsx
+// app/services/[service]/page.js
+export default function ServicePage({ params }) {
+    return <h1>Our expertise in {params.service}</h1>;
+}
+```
+
+This generates clean URLs: **yoursite.com/services/erp-sap-integration**
+
+### Dynamic Metadata for Maximum Impact
+
+```jsx
+export const metadata = {
+    title: 'Ipanova - SAP Business One & Web Development Experts',
+    description: 'We build custom web applications and integrate SAP Business One.',
+    openGraph: {
+        title: 'Ipanova - SAP Business One & Web Development Experts',
+        images: ['/images/og-image-ipanova.jpg'],
+    },
+};
+```
+
+### Rendering Strategies: SSR, SSG, and ISR
+
+- **SSR** for highly dynamic content.
+- **SSG** for pages with fixed content.
+- **ISR** for semi-dynamic content updated periodically.
+
+### Auto-Generate Your Sitemap
+
+A structured sitemap helps search engines index your site properly. Next.js supports sitemap generation via the `app/sitemap.ts` convention.
+
+### Robots.txt: Guide Search Engine Crawlers
+
+```txt
+User-agent: *
+Allow: /
+Disallow: /admin
+Sitemap: https://yoursite.com/sitemap.xml
+```
+
+## Must-Have SEO Tools
+
+- [**SERPmantics**](https://www.serpmantics.com/) — semantic content analysis
+- [**Google Search Console**](https://search.google.com/search-console) — indexing and performance tracking
+- [**Ubersuggest**](https://app.neilpatel.com/en/ubersuggest/) — keyword research
+
+Do you want to optimise your website's SEO or build a custom Next.js application? [Contact me](mailto:thobena.yann@gmail.com) — let's discuss your project!

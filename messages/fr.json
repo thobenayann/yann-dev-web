@@ -8,40 +8,163 @@
         "projects-link-label": "Lire l'étude de cas",
         "about-me": "À propos de moi",
         "technologies-title": "Ma stack technique",
-        "projects-title": "Mes projets"
+        "projects-title": "Mes projets",
+        "bento": {
+            "domains": {
+                "title": "Domaines d'expertise",
+                "items": [
+                    "Conception UX/UI",
+                    "Développement web",
+                    "DevOps",
+                    "API",
+                    "Commerce",
+                    "IA"
+                ],
+                "cards": [
+                    {
+                        "name": "Conception UX/UI",
+                        "body": "Concevoir des expériences utiles, simples et belles.",
+                        "slug": "ux-ui"
+                    },
+                    {
+                        "name": "Développement web",
+                        "body": "Sites et apps performants, accessibles et maintenables.",
+                        "slug": "web"
+                    },
+                    {
+                        "name": "DevOps",
+                        "body": "CI/CD, conteneurs, monitoring et automatisation.",
+                        "slug": "devops"
+                    },
+                    {
+                        "name": "API",
+                        "body": "APIs robustes, documentées et sécurisées.",
+                        "slug": "api"
+                    },
+                    {
+                        "name": "Commerce",
+                        "body": "Parcours d’achat fluides et KPI orientés business.",
+                        "slug": "commerce"
+                    },
+                    {
+                        "name": "IA",
+                        "body": "LLMs, RAG, embeddings et intégrations IA.",
+                        "slug": "ia"
+                    }
+                ]
+            },
+            "technologies": {
+                "title": "Technologies",
+                "items": [
+                    "React",
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Docker",
+                    "TypeScript",
+                    "Linux",
+                    "GitHub",
+                    "PostgreSQL",
+                    "MySQL",
+                    "Zod",
+                    "OpenAI",
+                    "Gemini",
+                    "JavaScript",
+                    "CSS"
+                ]
+            },
+            "ai": {
+                "title": "Intégrations IA",
+                "items": [
+                    "OpenAI API",
+                    "Google Gemini",
+                    "Embeddings",
+                    "RAG",
+                    "Traduction",
+                    "Synthèse de contenu"
+                ]
+            },
+            "deployments": {
+                "title": "Déploiements fluides",
+                "items": [
+                    "CI/CD",
+                    "Préviews PR",
+                    "Analyse de performance",
+                    "Vercel",
+                    "Docker",
+                    "Monitoring"
+                ]
+            }
+        }
     },
 
     "/*1": "===== PAGE À PROPOS =====",
     "About": {
         "title": "À propos de moi",
-        "description": "Découvrez Yann THOBENA, Concepteur Développeur d'Applications de Toulouse, France",
-        "intro": {
-            "title": "Introduction"
+        "description": "Découvrez Yann THOBENA, Concepteur Développeur d'Applications & Expert IA basé à Toulouse, France",
+        "hero": {
+            "bio": "Développeur fullstack depuis 2020, j'ai fait évoluer mon expertise vers l'IA dès 2022. Aujourd'hui j'accompagne Airbus dans sa transformation IA tout en continuant à créer des applications web sur mesure chez Ipanova.",
+            "location": "Toulouse, France · IPANOVA",
+            "roles": {
+                "cda": "Concepteur Développeur d'Applications",
+                "ai": "Expert IA",
+                "aiStatus": "En mission"
+            }
         },
-        "work": {
-            "title": "Expérience professionnelle"
+        "timeline": {
+            "title": "Mon parcours"
         },
-        "studies": {
-            "title": "Formation & Éducation"
+        "skills": {
+            "title": "Compétences",
+            "dev": "Dev Stack",
+            "ai": "IA & Outils",
+            "softSkills": "Savoir-faire"
         },
-        "technical": {
-            "title": "Compétences techniques"
-        },
-        "calendar": {
-            "schedule": "Planifier un appel"
+        "cta": {
+            "title": "Discutons",
+            "subtitle": "Ouvert aux opportunités, collaborations et échanges.",
+            "linkedin": "LinkedIn",
+            "email": "Email"
         }
     },
 
     "/*2": "===== PAGE BLOG =====",
     "Blog": {
         "title": "Blog",
-        "description": "Découvrez mes articles sur le développement web, les technologies front-end et back-end, et mes expériences en tant que développeur full-stack."
+        "description": "Articles sur le développement web, l'IA et les retours d'expérience.",
+        "readMore": "Lire",
+        "hero": {
+            "title": "Mes articles",
+            "subtitle": "Retours d'expérience, techniques et cas pratiques.",
+            "count": "{count, plural, =1 {# article} other {# articles}}"
+        },
+        "filters": {
+            "all": "Tous",
+            "ia": "IA & LLM",
+            "dev": "Dev",
+            "seo": "SEO",
+            "career": "Carrière"
+        },
+        "article": {
+            "backToBlog": "Retour au blog",
+            "readingTime": "{time} de lecture",
+            "publishedAt": "Publié le {date}",
+            "relatedTitle": "Articles liés"
+        },
+        "authorCard": {
+            "cta": "Ce cas vous parle ? Discutons de votre projet.",
+            "contact": "Me contacter",
+            "projects": "Voir mes projets"
+        }
     },
 
     "/*3": "===== PAGE PROJETS =====",
     "Work": {
         "title": "Projets",
         "description": "Découvrez mes projets de développement web, des applications full-stack aux sites web modernes et performants.",
+        "hero": {
+            "title": "Mes projets",
+            "subtitle": "Une sélection de mes réalisations — applications web, sites et intégrations IA."
+        },
         "viewProject": "Voir le projet",
         "backToProjects": "Retour aux projets",
         "projectDetails": {
@@ -120,6 +243,24 @@
             }
         }
     },
+    "/*9b": "===== FOOTER =====",
+    "Footer": {
+        "tagline": "Développeur Fullstack & Expert IA basé à Toulouse. Je conçois et développe des applications web modernes.",
+        "rights": "Tous droits réservés.",
+        "nav": {
+            "title": "Navigation",
+            "home": "Accueil",
+            "about": "À propos",
+            "work": "Projets",
+            "blog": "Blog"
+        },
+        "legal": {
+            "title": "Légal",
+            "mentions": "Mentions légales",
+            "privacy": "Confidentialité"
+        }
+    },
+
     "/*9": "===== SEO =====",
     "SEO": {
         "siteTitle": "Portfolio de Yann THOBENA",

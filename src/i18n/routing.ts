@@ -1,12 +1,9 @@
-import { createNavigation } from 'next-intl/navigation';
 import { defineRouting } from 'next-intl/routing';
 import { defaultLocale, localePrefix, locales } from './config';
 
+// Routing config only — navigation utilities live in src/i18n/navigation.ts
 export const routing = defineRouting({
     locales,
     defaultLocale,
     localePrefix,
 });
-
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-    createNavigation(routing);

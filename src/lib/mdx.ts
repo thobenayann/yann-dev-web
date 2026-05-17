@@ -2,7 +2,6 @@ import { Project, ProjectMetadata } from '@/types/mdx';
 import { ProjectMetadataSchema } from '@/types/mdx.schema';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
 import path from 'path';
 
 /**
@@ -12,8 +11,7 @@ async function getMDXFiles(dir: string): Promise<string[]> {
     try {
         const files = await fs.readdir(dir);
         return files.filter((file) => path.extname(file) === '.mdx');
-    } catch (error) {
-        console.error(`Erreur lors de la lecture du répertoire ${dir}:`, error);
+    } catch {
         return [];
     }
 }
@@ -47,17 +45,9 @@ async function readMDXFile(filePath: string): Promise<{
                   links: Array.isArray(data.links) ? data.links : [],
               };
 
-        // Sérialise le contenu MDX
-        const mdxSource = await serialize(content, {
-            parseFrontmatter: true,
-            mdxOptions: {
-                development: process.env.NODE_ENV === 'development',
-            },
-        });
-
         return {
             metadata,
-            content: mdxSource.compiledSource,
+            content,
         };
     } catch (error) {
         console.error(
@@ -129,12 +119,63 @@ export async function getProjects(locale: string = 'fr'): Promise<Project[]> {
 }
 
 /**
- * Récupère un projet spécifique par son slug
+ * Récupère un projet par son slug avec le contenu MDX brut (non compilé).
+ * Utilisé par la route `/work/[slug]` qui rend via `next-mdx-remote/rsc`.
  */
 export async function getProjectBySlug(
     slug: string,
     locale: string = 'fr'
 ): Promise<Project | null> {
-    const projects = await getProjects(locale);
-    return projects.find((project) => project.slug === slug) || null;
+    const projectsDir = path.join(
+        process.cwd(),
+        'src',
+        'app',
+        '[locale]',
+        'work',
+        'projects',
+        locale
+    );
+    const filePath = path.join(projectsDir, `${slug}.mdx`);
+    try {
+        const rawContent = await fs.readFile(filePath, 'utf-8');
+        const { data, content } = matter(rawContent);
+        const parsed = ProjectMetadataSchema.safeParse(data);
+        const metadata: ProjectMetadata = parsed.success
+            ? parsed.data
+            : {
+                  title: String(data.title ?? ''),
+                  publishedAt: String(
+                      data.publishedAt ?? new Date().toISOString()
+                  ),
+                  summary: String(data.summary ?? ''),
+                  image: data.image,
+                  images: Array.isArray(data.images) ? data.images : [],
+                  tag: data.tag,
+                  team: Array.isArray(data.team) ? data.team : [],
+                  link: data.link,
+                  links: Array.isArray(data.links) ? data.links : [],
+              };
+        return { metadata, slug, content };
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Liste les slugs disponibles pour une locale donnée (utilisé par generateStaticParams).
+ */
+export async function getProjectSlugs(
+    locale: string = 'fr'
+): Promise<string[]> {
+    const projectsDir = path.join(
+        process.cwd(),
+        'src',
+        'app',
+        '[locale]',
+        'work',
+        'projects',
+        locale
+    );
+    const mdxFiles = await getMDXFiles(projectsDir);
+    return mdxFiles.map((f) => path.basename(f, path.extname(f)));
 }

@@ -45,7 +45,7 @@ export function LanguageSwitcher() {
                                 alt={languages[locale]}
                                 width={20}
                                 height={15}
-                                className='object-cover'
+                                style={{ width: '20px', height: '15px' }}
                             />
                             <span className='font-medium'>
                                 {languages[locale]}
