@@ -23,7 +23,15 @@
       "Bash(pnpm tsc *)",
       "mcp__plugin_context-mode_context-mode__ctx_execute",
       "Bash(echo \"EXIT=$?\")",
-      "mcp__magic__21st_magic_component_builder"
+      "mcp__magic__21st_magic_component_builder",
+      "Bash(ls middleware*)",
+      "Bash(ls src/middleware*)",
+      "Bash(cat src/i18n/config.ts)",
+      "Bash(cat src/i18n/request.ts)",
+      "Bash(cat src/proxy.ts)",
+      "Bash(cat src/src/proxy.ts)",
+      "Bash(pnpm view *)",
+      "Bash(pnpm remove *)"
     ]
   }
 }
