@@ -3,12 +3,12 @@ type IconProps = React.SVGProps<SVGSVGElement>;
 import { motion } from 'framer-motion';
 import { AiOutlineDocker } from 'react-icons/ai';
 import { FaGithub, FaLaptop } from 'react-icons/fa';
+import { RiOpenaiFill } from 'react-icons/ri';
 import {
     SiFastapi,
     SiJavascript,
     SiNextdotjs,
     SiNginx,
-    SiOpenai,
     SiPocketbase,
     SiPython,
     SiReact,
@@ -154,7 +154,7 @@ const Icons = {
         <SiJavascript className='w-full h-full' />
     ),
     fastapi: (props: IconProps) => <SiFastapi className='w-full h-full' />,
-    openai: (props: IconProps) => <SiOpenai className='w-full h-full' />,
+    openai: (props: IconProps) => <RiOpenaiFill className='w-full h-full' />,
     laptop: (props: IconProps) => <FaLaptop className='w-full h-full' />,
 };
 

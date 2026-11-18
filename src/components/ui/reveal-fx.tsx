@@ -85,10 +85,6 @@ export function RevealFx({
                     'linear-gradient(to right, black 0%, black 25%, transparent 50%)',
                 maskSize: '300% 100%',
                 maskPosition: '100% 0',
-                WebkitMaskImage:
-                    'linear-gradient(to right, black 0%, black 25%, transparent 50%)',
-                WebkitMaskSize: '300% 100%',
-                WebkitMaskPosition: '100% 0',
             }}
             // État final de l'animation
             animate={{
@@ -96,7 +92,6 @@ export function RevealFx({
                 y: isRevealed ? 0 : translateY,
                 filter: isRevealed ? 'blur(0px)' : 'blur(8px)',
                 maskPosition: isRevealed ? '0% 0' : '100% 0',
-                WebkitMaskPosition: isRevealed ? '0% 0' : '100% 0',
             }}
             // Configuration de la transition
             transition={{
