@@ -2,7 +2,12 @@
 
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+    AnimatePresence,
+    motion,
+    type Transition,
+    type Variants,
+} from 'framer-motion';
 import Link from 'next/link';
 import * as React from 'react';
 import type { IconType } from 'react-icons';
@@ -48,7 +53,7 @@ interface ExpandableTabsProps {
  * Animation variants for the button container
  * Controls the padding and gap based on selection state
  */
-const buttonVariants = {
+const buttonVariants: Variants = {
     initial: {
         gap: 0,
         paddingLeft: '.5rem',
@@ -65,14 +70,14 @@ const buttonVariants = {
  * Animation variants for the text span
  * Controls the width and opacity for the expanding/collapsing effect
  */
-const spanVariants = {
+const spanVariants: Variants = {
     initial: { width: 0, opacity: 0 },
     animate: { width: 'auto', opacity: 1 },
     exit: { width: 0, opacity: 0 },
 };
 
 // Animation transition configuration
-const transition = { delay: 0.1, type: 'spring', bounce: 0, duration: 0.6 };
+const transition: Transition = { delay: 0.1, type: 'spring', bounce: 0, duration: 0.6 };
 
 /**
  * A responsive navigation component that displays tabs with expanding labels

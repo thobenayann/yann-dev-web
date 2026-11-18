@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { CircleDot, Search, X } from 'lucide-react';
 import type React from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -112,7 +112,7 @@ export function SearchBar({
         if (isFocused) inputRef.current?.focus();
     }, [isFocused]);
 
-    const searchIconVariants = {
+    const searchIconVariants: Variants = {
         initial: { scale: 1 },
         animate: {
             rotate: isAnimating ? [0, -15, 15, -10, 10, 0] : 0,
@@ -121,7 +121,7 @@ export function SearchBar({
         },
     };
 
-    const suggestionVariants = {
+    const suggestionVariants: Variants = {
         hidden: (i: number) => ({
             opacity: 0, y: -10, scale: 0.95,
             transition: { duration: 0.15, delay: i * 0.05 },
